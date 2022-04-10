@@ -7,7 +7,6 @@ import constant from "../../constant/descriptions.json";
 const HomeScreen = () => {
   return (
     <div className="home-screen-container">
-      <NavBar></NavBar>
       <div className="logo-title-desc-container">
         <img src={geolokaLogo}></img>
         <div className="title-desc-container">

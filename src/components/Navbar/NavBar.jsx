@@ -1,6 +1,9 @@
 import React from "react";
 import geolokaLogo from "../../images/GeolokaLogo.png";
 import "./NavBarStyle.css";
+import { Anchor } from "antd";
+
+const { Link } = Anchor;
 
 const NavBar = () => {
   return (
@@ -10,10 +13,12 @@ const NavBar = () => {
           <img src={geolokaLogo} className="geoloka-logo"></img>
         </div>
         <div className="link-container">
-          <a>HOME</a>
+          <a href="/">HOME</a>
           <a>CONTACT US</a>
           <a>ABOUT US</a>
-          <a>FEATURES</a>
+          <Anchor>
+            <Link href="#features" title="feature"></Link>
+          </Anchor>
         </div>
       </div>
     </div>
