@@ -1,6 +1,7 @@
 import React from "react";
 import lineImage from "../../images/footerLine.png";
 import "./Footer.css";
+import constant from "../../constant/descriptions.json";
 
 const Footer = () => {
   return (
@@ -15,7 +16,7 @@ const Footer = () => {
           <img src={lineImage}></img>
         </div>
         <div className="copyright-container">
-          <p>Copyright © 2022 Geoloka. All rights reserved.</p>
+          <p>{constant.copyright}</p>
         </div>
       </div>
     </div>
