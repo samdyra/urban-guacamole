@@ -1,11 +1,8 @@
 import "./App.css";
+import HomeScreen from "./screens/Home/HomeScreen";
 
 function App() {
-  return (
-    <div>
-      <p>wont stop to surrender</p>
-    </div>
-  );
+  return <HomeScreen></HomeScreen>;
 }
 
 export default App;
