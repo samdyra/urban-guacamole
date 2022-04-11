@@ -1,9 +1,6 @@
 import React from "react";
 import geolokaLogo from "../../images/GeolokaLogo.png";
 import "./NavBarStyle.css";
-import { Anchor } from "antd";
-
-const { Link } = Anchor;
 
 const NavBar = () => {
   return (
@@ -14,11 +11,9 @@ const NavBar = () => {
         </div>
         <div className="link-container">
           <a href="/">HOME</a>
-          <a>CONTACT US</a>
-          <a>ABOUT US</a>
-          <Anchor>
-            <Link href="#features" title="feature"></Link>
-          </Anchor>
+          <a href="/UHIScreen">UHI Map</a>
+          <a href="/RTRWScreen">RDTR Zoning Map</a>
+          <a href="/NetizenScreen">Netizen Contribution</a>
         </div>
       </div>
     </div>

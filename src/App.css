@@ -1,0 +1,16 @@
+/* Setting up fonts */
+@font-face {
+  font-family: montserrat;
+  src: url(./fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: poppins;
+  src: url(./fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: opensans;
+  src: url(./fonts/OpenSans-Regular.ttf);
+}
+/* Setting up fonts End */
+
