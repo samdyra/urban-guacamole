@@ -15,12 +15,16 @@ import whatsapp from "../../images/whatsapp.png";
 const UHIMapScreen = () => {
   return (
     <div className="UHIMap-container">
-      {/* UHI Legend Start */}
       <div className="UHIMap-Legend-container">
         <div className="UHILegend-container">
-          <h1>UHI Map</h1>
-          <h3>Cirebon City</h3>
-          <h2>23 C</h2>
+          {/* UHI Legend Title*/}
+          <div className="UHI-title">
+            <h1>UHI Map</h1>
+            <h3>Cirebon City</h3>
+            <h2>23 C</h2>
+          </div>
+          {/* UHI Legend Title End*/}
+          {/* UHI Legend Param */}
           <div className="UHIparameter-container">
             <div className="impsur-container">
               <img src={impsur}></img>
@@ -39,6 +43,8 @@ const UHIMapScreen = () => {
               <h3>{UHIconstant.antro}</h3>
             </div>
           </div>
+          {/* UHI Legend Param End */}
+          {/* UHI Legend Info  */}
           <div className="UHIinfo-container">
             <h1>More information on selected area : </h1>
             <div className="UHIKeterangan-container">
@@ -56,6 +62,8 @@ const UHIMapScreen = () => {
               </div>
             </div>
           </div>
+          {/* UHI Legend Info End */}
+          {/* UHI Legend Footer */}
           <div className="UHIFooter-container">
             <div className="UHIFooter-element-container">
               <div className="UHIFooter-about-us-container">
@@ -76,6 +84,7 @@ const UHIMapScreen = () => {
               <p>{constant.copyright}</p>
             </div>
           </div>
+          {/* UHI Legend Footer End */}
         </div>
         <div className="UHIMap-container"></div>
       </div>
