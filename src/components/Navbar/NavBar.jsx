@@ -10,7 +10,7 @@ const NavBar = () => {
           <img src={geolokaLogo} className="geoloka-logo"></img>
         </div>
         <div className="link-container">
-          <a href="/">HOME</a>
+          <a href="/">Home</a>
           <a href="/UHIScreen">UHI Map</a>
           <a href="/RTRWScreen">RDTR Zoning Map</a>
           <a href="/NetizenScreen">Netizen Contribution</a>

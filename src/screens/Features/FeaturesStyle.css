@@ -1,0 +1,149 @@
+.feature-screen-container {
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title-features-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 3px red solid; */
+}
+
+.featureTitle-container {
+  padding-top: 30px;
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 96px;
+  text-align: center;
+  color: #28385e;
+  padding-bottom: 30px;
+}
+
+.feature-container {
+  display: flex;
+  /* border: 3px red solid; */
+  width: 1200px;
+  justify-content: space-around;
+  padding: 0px 15px;
+}
+
+/* UHI */
+
+.UHIfeature-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.UHIfeature-container img {
+  width: 303px;
+  height: 286px;
+  margin-bottom: 15px;
+}
+
+.UHIfeature-container a {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #28385e;
+  margin-bottom: 15px;
+}
+
+.UHIfeature-container p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: justify;
+  color: #000000;
+}
+
+/* UHI End */
+/* RTRW */
+.RTRWfeature-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.RTRWfeature-container img {
+  width: 303px;
+  height: 286px;
+  margin-bottom: 15px;
+}
+
+.RTRWfeature-container a {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #28385e;
+  margin-bottom: 15px;
+}
+
+.RTRWfeature-container p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: justify;
+  color: #000000;
+}
+/* RTRW End */
+/* Netizen */
+.Netizenfeature-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.Netizenfeature-container img {
+  width: 303px;
+  height: 286px;
+  margin-bottom: 15px;
+}
+
+.Netizenfeature-container a {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #28385e;
+  margin-bottom: 15px;
+}
+
+.Netizenfeature-container p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: justify;
+  color: #000000;
+}
+/* Netizen */
