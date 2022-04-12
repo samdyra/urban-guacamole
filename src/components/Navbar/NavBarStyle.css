@@ -1,0 +1,31 @@
+.nav-container {
+  background: #28385e;
+}
+
+.nav-element {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1170px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 15px 10px 15px;
+}
+
+.geoloka-logo-container img {
+  height: 45px;
+  width: 45px;
+}
+
+.link-container a {
+  /* border: 3px solid red; */
+  padding-left: 29px;
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #f5f5f5;
+  text-decoration: none;
+}

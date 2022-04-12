@@ -1,3 +1,25 @@
+/* Default Settings */
+html,
+body {
+  margin: 0px;
+}
+
+input:focus {
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Default Settings End */
 /* Setting up fonts */
 @font-face {
   font-family: montserrat;
@@ -13,4 +35,3 @@
   src: url(./fonts/OpenSans-Regular.ttf);
 }
 /* Setting up fonts End */
-
