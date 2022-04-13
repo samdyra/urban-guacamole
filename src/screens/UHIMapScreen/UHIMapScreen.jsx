@@ -1,5 +1,7 @@
 import React from "react";
 import "./UHIMapScreenStyle.css";
+import { MapContainer, TileLayer, GeoJSON, ScaleControl } from "react-leaflet";
+
 import constant from "../../constant/descriptions.json";
 import UHIconstant from "../../constant/UHIDesc.json";
 import impsur from "../../images/ImperSurface.png";
@@ -19,8 +21,9 @@ const UHIMapScreen = () => {
         <div className="UHILegend-container">
           {/* UHI Legend Title*/}
           <div className="UHI-title">
-            <h1>UHI Map</h1>
+            <h1>UHI MAP</h1>
             <h3>Cirebon City</h3>
+            <h4>UHI Value in selected area :</h4>
             <h2>23 C</h2>
           </div>
           {/* UHI Legend Title End*/}
@@ -86,7 +89,23 @@ const UHIMapScreen = () => {
           </div>
           {/* UHI Legend Footer End */}
         </div>
-        <div className="UHIMap-container"></div>
+      </div>
+      <div className="UHIMap-map-container">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={13}
+          style={{
+            height: "100%",
+            position: "relative",
+            zIndex: 0,
+            boxShadow: "-2px 3px 5px 0 rgba(0,.9,0,.4)",
+          }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </MapContainer>
       </div>
     </div>
   );

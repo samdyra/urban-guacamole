@@ -1,0 +1,66 @@
+.UHIMap-container {
+  height: calc(100vh - 69px);
+  /* border: 3px solid red; */
+  display: flex;
+}
+
+.UHIMap-Legend-container {
+  flex: 0 0 400px;
+  box-shadow: "5px 0px -2px 2px rgba(0,.4,0,0)";
+  z-index: 3;
+  position: relative;
+  /* border: 3px solid red; */
+  /* width: 400px; */
+  padding: 15px;
+  overflow-y: scroll;
+}
+
+.UHIMap-map-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.UHI-title {
+  text-align: justify;
+}
+
+.UHI-title h1 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 8px;
+}
+
+.UHI-title h3 {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 5px;
+}
+
+.UHI-title h4 {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.UHI-title h2 {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: justify;
+  color: #f54d42;
+}
