@@ -5,6 +5,9 @@ import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import constant from "../../constant/descriptions.json";
+import geolokaLogo from "../../images/GeolokaLogo.png";
+import footerLine from "../../images/miniFooterLine.png";
+import { MapContainer, TileLayer, GeoJSON, ScaleControl } from "react-leaflet";
 
 const RTRWMapScreen = () => {
   return (
@@ -14,14 +17,14 @@ const RTRWMapScreen = () => {
           {/* RTRW Title */}
           <div className="RTRW-legend-title-container">
             <h1>RTRW Zoning Map</h1>
-            <p>Scale 1:10000</p>
+            <p>Scale 1 : 10000</p>
             <h2>Cirebon City</h2>
           </div>
           {/* RTRW Title End */}
           {/* RTRW Data */}
           <div className="RTRW-data-container">
             <div className="RTRW-data-title">
-              <h1>Data Attributes</h1>
+              <h1>Data Attributes :</h1>
             </div>
             <div className="RTRW-data">
               <div className="RTRW-data-content">
@@ -40,30 +43,38 @@ const RTRWMapScreen = () => {
           </div>
           {/* RTRW Data End*/}
           {/* RTRW Legend*/}
-          <div className="RTRW-legend-container">
+          <div className="RTRW-attribute-legend-container">
             <div className="RTRW-legend-title">
-              <h1>Data Attributes</h1>
+              <h1>Legend</h1>
             </div>
             <div className="RTRW-legend">
               <div className="RTRW-legend-content">
-                <p>Urban</p>
-                <p>Vegetation</p>
-                <p>River</p>
-                <p>Ricefield</p>
-                <p>Roads</p>
-                <p>Bare Lands</p>
-                <p>Bushes</p>
-                <p>Forest</p>
+                <div className="ur-rc-container">
+                  <p>Urban</p>
+                  <p>Vegetation</p>
+                  <p>River</p>
+                  <p>Ricefield</p>
+                </div>
+                <div className="rd-fr-container">
+                  <p>X</p>
+                  <p>X</p>
+                  <p>X</p>
+                  <p>X</p>
+                </div>
               </div>
               <div className="RTRW-legend-items">
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
+                <div className="ur-rc-items">
+                  <p>Roads</p>
+                  <p>Bare Lands</p>
+                  <p>Bushes</p>
+                  <p>Forest</p>
+                </div>
+                <div className="rd-fr-items">
+                  <p>X</p>
+                  <p>X</p>
+                  <p>X</p>
+                  <p>X</p>
+                </div>
               </div>
             </div>
           </div>
@@ -97,30 +108,51 @@ const RTRWMapScreen = () => {
             </div>
           </div>
           {/* RTRW Layer End */}
-          {/* RTRW Footer  */}
-          <div className="UHIFooter-container">
-            <div className="UHIFooter-element-container">
-              <div className="UHIFooter-about-us-container">
-                <img className="UHIFooter-logo"></img>
-                <p>ABOUT US</p>
-              </div>
-              <div className="UHIFooter-contact">
-                <p>CONTACT</p>
-                <div className="UHIFooter-contact-logo">
+        </div>
+        <div className="UHIFooter-container">
+          <div className="UHIFooter-element-container">
+            <div className="UHIFooter-about-us-container">
+              <img className="UHIFooter-logo" src={geolokaLogo}></img>
+              <p>ABOUT US</p>
+            </div>
+            <div className="UHIFooter-contact">
+              <p>CONTACT</p>
+              <div className="UHIFooter-contact-logo">
+                <div className="UHIFooter-fb-linkedin">
                   <img src={facebook}></img>
                   <img src={linkedin}></img>
+                </div>
+                <div className="UHIFooter-ig-wa">
                   <img src={instagram}></img>
                   <img src={whatsapp}></img>
                 </div>
               </div>
             </div>
-            <div className="UHIFooter-copyright">
-              <p>{constant.copyright}</p>
-            </div>
           </div>
-          {/* RTRW Footer End  */}
+          <div className="UHIFooter-line">
+            <img src={footerLine}></img>
+          </div>
+          <div className="UHIFooter-copyright">
+            <p>{constant.copyright}</p>
+          </div>
         </div>
-        <div className="RTRW-map-container"></div>
+      </div>
+      <div className="RTRW-map-container">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={13}
+          style={{
+            height: "100%",
+            position: "relative",
+            zIndex: 0,
+            boxShadow: "-2px 3px 5px 0 rgba(0,.9,0,.4)",
+          }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </MapContainer>
       </div>
     </div>
   );

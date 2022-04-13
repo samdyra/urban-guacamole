@@ -1,0 +1,150 @@
+.RTRWMapScreen-container {
+  height: calc(100vh - 69px);
+  /* border: 3px solid red; */
+  display: flex;
+}
+
+.RTRW-legend-map-container {
+  flex: 0 0 400px;
+  box-shadow: "5px 0px -2px 2px rgba(0,.4,0,0)";
+  z-index: 3;
+  position: relative;
+  /* border: 3px solid red; */
+  /* width: 400px; */
+  /* margin: 25px; */
+  overflow-y: scroll;
+}
+
+.RTRW-legend-container {
+  margin: 25px;
+  /* border: 3px solid red; */
+}
+
+.RTRW-map-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.RTRW-legend-title-container h1 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 8px;
+}
+
+.RTRW-legend-title-container p {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 4px;
+  padding-top: 8px;
+}
+
+.RTRW-legend-title-container h2 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 111%;
+  color: #000000;
+  padding-top: 8px;
+  padding-bottom: 20px;
+}
+
+.RTRW-data-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.RTRW-data-title h1 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.RTRW-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.RTRW-data-items p {
+  text-align: end;
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.RTRW-data-content p {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.RTRW-attribute-legend-container {
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.RTRW-legend-title h1 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.RTRW-legend {
+  /* border: 3px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.RTRW-legend-content {
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
+}
+
+.RTRW-legend-items {
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
+}
+
+.ur-rc-container {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.ur-rc-items {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
