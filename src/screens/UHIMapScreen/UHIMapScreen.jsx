@@ -1,7 +1,6 @@
 import React from "react";
 import "./UHIMapScreenStyle.css";
 import { MapContainer, TileLayer, GeoJSON, ScaleControl } from "react-leaflet";
-
 import constant from "../../constant/descriptions.json";
 import UHIconstant from "../../constant/UHIDesc.json";
 import impsur from "../../images/ImperSurface.png";
@@ -13,6 +12,7 @@ import facebook from "../../images/facebook.png";
 import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
+import footerLine from "../../images/miniFooterLine.png";
 
 const UHIMapScreen = () => {
   return (
@@ -29,21 +29,29 @@ const UHIMapScreen = () => {
           {/* UHI Legend Title End*/}
           {/* UHI Legend Param */}
           <div className="UHIparameter-container">
-            <div className="impsur-container">
-              <img src={impsur}></img>
-              <h3>{UHIconstant.imper}</h3>
+            <div className="imp-night-container">
+              <div className="impsur-container">
+                <img src={impsur}></img>
+                <h3>{UHIconstant.imper}</h3>
+                <h2>Impervious Surface</h2>
+              </div>
+              <div className="nightlight-container">
+                <img src={nightlight}></img>
+                <h3>{UHIconstant.nightlight}</h3>
+                <h2>Night Light</h2>
+              </div>
             </div>
-            <div className="nightlight-container">
-              <img src={nightlight}></img>
-              <h3>{UHIconstant.nightlight}</h3>
-            </div>
-            <div className="NDVI-container">
-              <img src={NDVI}></img>
-              <h3>{UHIconstant.NDVI}</h3>
-            </div>
-            <div className="antro-container">
-              <img src={antro}></img>
-              <h3>{UHIconstant.antro}</h3>
+            <div className="NDVI-antro-container">
+              <div className="NDVI-container">
+                <img src={NDVI}></img>
+                <h3>{UHIconstant.NDVI}</h3>
+                <h2>NDVI</h2>
+              </div>
+              <div className="antro-container">
+                <img src={antro}></img>
+                <h3>{UHIconstant.antro}</h3>
+                <h2>Anthropogenic Heat</h2>
+              </div>
             </div>
           </div>
           {/* UHI Legend Param End */}
@@ -52,10 +60,10 @@ const UHIMapScreen = () => {
             <h1>More information on selected area : </h1>
             <div className="UHIKeterangan-container">
               <div className="UHIKeterangan-judul">
-                <p>Kecamatan</p>
-                <p>Desa</p>
-                <p>Population</p>
-                <p>Land Use/Land Cover</p>
+                <p>Kecamatan :</p>
+                <p>Desa :</p>
+                <p>Population :</p>
+                <p>Land Use/Land Cover :</p>
               </div>
               <div className="UHIKeterangan-content">
                 <p>Cibeunying Kidul</p>
@@ -66,29 +74,36 @@ const UHIMapScreen = () => {
             </div>
           </div>
           {/* UHI Legend Info End */}
-          {/* UHI Legend Footer */}
-          <div className="UHIFooter-container">
-            <div className="UHIFooter-element-container">
-              <div className="UHIFooter-about-us-container">
-                <img className="UHIFooter-logo"></img>
-                <p>ABOUT US</p>
-              </div>
-              <div className="UHIFooter-contact">
-                <p>CONTACT</p>
-                <div className="UHIFooter-contact-logo">
+        </div>
+        {/* UHI Legend Footer */}
+        <div className="UHIFooter-container">
+          <div className="UHIFooter-element-container">
+            <div className="UHIFooter-about-us-container">
+              <img className="UHIFooter-logo" src={geolokaLogo}></img>
+              <p>ABOUT US</p>
+            </div>
+            <div className="UHIFooter-contact">
+              <p>CONTACT</p>
+              <div className="UHIFooter-contact-logo">
+                <div className="UHIFooter-fb-linkedin">
                   <img src={facebook}></img>
                   <img src={linkedin}></img>
+                </div>
+                <div className="UHIFooter-ig-wa">
                   <img src={instagram}></img>
                   <img src={whatsapp}></img>
                 </div>
               </div>
             </div>
-            <div className="UHIFooter-copyright">
-              <p>{constant.copyright}</p>
-            </div>
           </div>
-          {/* UHI Legend Footer End */}
+          <div className="UHIFooter-line">
+            <img src={footerLine}></img>
+          </div>
+          <div className="UHIFooter-copyright">
+            <p>{constant.copyright}</p>
+          </div>
         </div>
+        {/* UHI Legend Footer End */}
       </div>
       <div className="UHIMap-map-container">
         <MapContainer
