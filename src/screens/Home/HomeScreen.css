@@ -8,6 +8,10 @@
   padding: 0 15px;
 }
 
+/* .home-screen-container::-webkit-scrollbar {
+  display: none;
+} */
+
 .logo-title-desc-container {
   display: flex;
   align-items: center;

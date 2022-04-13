@@ -14,9 +14,26 @@ input:focus {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #6a6a6a #ffffff;
+}
 
+/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #989898;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
 }
 
 /* Default Settings End */

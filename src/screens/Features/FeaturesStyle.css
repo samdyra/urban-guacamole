@@ -4,6 +4,10 @@
   margin: 0 auto;
 }
 
+/* .feature-screen-container::-webkit-scrollbar {
+  display: none;
+} */
+
 .title-features-container {
   display: flex;
   flex-direction: column;

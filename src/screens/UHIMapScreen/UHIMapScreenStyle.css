@@ -4,6 +4,10 @@
   display: flex;
 }
 
+/* .UHIMap-container::-webkit-scrollbar {
+  display: none;
+} */
+
 .UHIMap-Legend-container {
   flex: 0 0 400px;
   box-shadow: "5px 0px -2px 2px rgba(0,.4,0,0)";
