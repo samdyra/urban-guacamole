@@ -9,6 +9,7 @@ import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
 import constant from "../../constant/descriptions.json";
 import Tweet from "../../components/Tweet/Tweet";
+import { mockUserData } from "../../constant/mockUserData";
 
 const NetizenScreen = () => {
   return (
@@ -44,7 +45,9 @@ const NetizenScreen = () => {
           {/* Netizen tag end*/}
           {/* Netizen Tweets*/}
           <div>
-            <Tweet></Tweet>
+            {mockUserData.map((data) => {
+              return <Tweet data={data}></Tweet>;
+            })}
           </div>
           {/* Netizen Tweets End*/}
           {/* Netizen Tweets logo*/}

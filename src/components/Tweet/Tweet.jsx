@@ -1,21 +1,24 @@
 import React from "react";
+import "./tweetStyle.css";
+import sam from "../../images/dsam.png";
 
-const Tweet = () => {
+const Tweet = ({ data }) => {
+  console.log(data.img);
   return (
     <div className="tweet-container">
       <div className="tweet-image-container">
         <div className="tweet-image">
-          <img></img>
+          <img src={data.img}></img>
         </div>
         <div className="all-tweet-texts-container">
           <div className="tweet-id-content-container">
             <div className="tweet-id-container">
-              <h1>Dwiputra Sam</h1>
-              <h4>@dwps-sam</h4>
-              <p>5m</p>
+              <h1>{data.name}</h1>
+              <h4>{data.username}</h4>
+              <p>{data.minute}</p>
             </div>
             <div className="tweet-tweet-container">
-              <p>I don’t remember IPDN’s canteen being this hot?</p>
+              <p>{data.tweet}</p>
             </div>
           </div>
         </div>

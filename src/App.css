@@ -38,15 +38,20 @@ input:focus {
 /* Setting up fonts */
 @font-face {
   font-family: montserrat;
-  src: url(./fonts/Poppins-Regular.ttf);
+  src: url(./fonts/Montserrat-Medium.ttf);
 }
 
 @font-face {
   font-family: poppins;
-  src: url(./fonts/Poppins-Regular.ttf);
+  src: url(./fonts/Poppins-Medium.ttf);
 }
 @font-face {
   font-family: opensans;
-  src: url(./fonts/OpenSans-Regular.ttf);
+  src: url(./fonts/OpenSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: inter;
+  src: url(./fonts/Inter-Medium.ttf);
 }
 /* Setting up fonts End */
