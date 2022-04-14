@@ -56,10 +56,10 @@ const RTRWMapScreen = () => {
                   <p>Ricefield</p>
                 </div>
                 <div className="rd-fr-container">
-                  <p>X</p>
-                  <p>X</p>
-                  <p>X</p>
-                  <p>X</p>
+                  <div className="ur-legend"></div>
+                  <div className="veg-legend"></div>
+                  <div className="rvr-legend"></div>
+                  <div className="rc-legend"></div>
                 </div>
               </div>
               <div className="RTRW-legend-items">
@@ -70,10 +70,10 @@ const RTRWMapScreen = () => {
                   <p>Forest</p>
                 </div>
                 <div className="rd-fr-items">
-                  <p>X</p>
-                  <p>X</p>
-                  <p>X</p>
-                  <p>X</p>
+                  <div className="rd-legend"></div>
+                  <div className="bl-legend"></div>
+                  <div className="bs-legend"></div>
+                  <div className="fr-legend"></div>
                 </div>
               </div>
             </div>

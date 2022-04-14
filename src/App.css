@@ -11,8 +11,6 @@ input:focus {
 * {
   box-sizing: border-box;
   margin: 0;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
