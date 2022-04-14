@@ -86,24 +86,23 @@ const RTRWMapScreen = () => {
             </div>
             <div className="RTRW-layer">
               <div className="RTRW-layer-content">
-                <p>Urban</p>
-                <p>Vegetation</p>
-                <p>River</p>
-                <p>Ricefield</p>
-                <p>Roads</p>
-                <p>Bare Lands</p>
-                <p>Bushes</p>
-                <p>Forest</p>
+                <p>Basemap mode</p>
+                <p>UHI Map</p>
+                <p>Region Border</p>
               </div>
               <div className="RTRW-layer-items">
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
-                <p>X</p>
+                <label className="form-switch">
+                  <input onClick="" type="checkbox" />
+                  <i></i>
+                </label>
+                <label className="form-switch">
+                  <input onClick="" type="checkbox" />
+                  <i></i>
+                </label>
+                <label className="form-switch">
+                  <input onClick="" type="checkbox" />
+                  <i></i>
+                </label>
               </div>
             </div>
           </div>

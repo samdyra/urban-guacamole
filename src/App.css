@@ -15,7 +15,7 @@ input:focus {
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
-  scrollbar-width: auto;
+  scrollbar-width: 10px;
   scrollbar-color: #6a6a6a #ffffff;
 }
 
