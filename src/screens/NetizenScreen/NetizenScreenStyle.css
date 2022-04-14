@@ -1,0 +1,184 @@
+.netizen-container {
+  height: calc(100vh - 69px);
+  /* border: 3px solid red; */
+  display: flex;
+}
+
+/* .UHIMap-container::-webkit-scrollbar {
+  display: none;
+} */
+
+.netizen-legend-map-container {
+  flex: 0 0 400px;
+  box-shadow: "5px 0px -2px 2px rgba(0,.4,0,0)";
+  z-index: 3;
+  position: relative;
+  overflow-y: scroll;
+  /* margin: 25pxs; */
+}
+
+.netizen-map-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.netizen-legend-container {
+  /* border: 3px solid red; */
+  margin: 25px;
+}
+
+.netizen-title h1 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 8px;
+}
+
+.netizen-title h2 {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 10px;
+}
+
+.netizen-title p {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 111%;
+  color: #000000;
+  padding-bottom: 5px;
+}
+
+.netizen-title h3 {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 60px;
+  text-align: justify;
+  color: #d53939;
+}
+
+.netizen-map-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.netizen-tag {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.hot {
+  display: flex;
+  /* border: 3px solid red; */
+  background: #ffcd00;
+  border-radius: 5px;
+  padding-inline: 7px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pollution {
+  display: flex;
+  justify-content: space-between;
+  background: #ffcd00;
+  border-radius: 5px;
+  padding-inline: 7px;
+  align-items: center;
+}
+
+.temperature {
+  display: flex;
+  background: #ffcd00;
+  border-radius: 5px;
+  padding-inline: 7px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-edit {
+  display: flex;
+  border-radius: 5px;
+  padding: 0 0px 0 5px;
+  border: 2px solid black;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hot p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 19px;
+  color: #000000;
+  padding-right: 10px;
+}
+.pollution p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 19px;
+  color: #000000;
+  padding-right: 10px;
+}
+.temperature p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 19px;
+  color: #000000;
+  padding-right: 10px;
+}
+
+.add-edit p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 19px;
+  color: #000000;
+  padding-right: 10px;
+}
+
+.hot div {
+  font-size: 12px;
+  font-family: poppins;
+  font-weight: 100;
+  /* padding-top: 1px; */
+}
+
+.pollution div {
+  font-size: 12px;
+  font-family: poppins;
+  font-weight: 100;
+  /* padding-top: 1px; */
+}
+.temperature div {
+  font-size: 12px;
+  font-family: poppins;
+  font-weight: 100;
+  /* padding-top: 1px; */
+}
+.add-edit div {
+  font-size: 12px;
+  font-family: poppins;
+  font-weight: 100;
+  /* padding-top: 1px; */
+}
