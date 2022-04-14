@@ -8,6 +8,7 @@ import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
 import constant from "../../constant/descriptions.json";
+import Tweet from "../../components/Tweet/Tweet";
 
 const NetizenScreen = () => {
   return (
@@ -42,21 +43,8 @@ const NetizenScreen = () => {
           </div>
           {/* Netizen tag end*/}
           {/* Netizen Tweets*/}
-          <div className="twitter-container">
-            <div className="account-container">
-              <div className="twitter-image">
-                <img></img>
-              </div>
-              <div className="twitter-content">
-                <div className="twitter-name">
-                  <p>Dwiputra Sam</p>
-                  <p>@dwp_sam</p>
-                </div>
-                <div className="tweet">
-                  <p>I dont remember IPDNs canteen being this hot?</p>
-                </div>
-              </div>
-            </div>
+          <div>
+            <Tweet></Tweet>
           </div>
           {/* Netizen Tweets End*/}
           {/* Netizen Tweets logo*/}
