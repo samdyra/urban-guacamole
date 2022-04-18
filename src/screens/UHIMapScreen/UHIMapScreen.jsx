@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UHIMapScreenStyle.css";
-import { MapContainer, TileLayer, GeoJSON, ScaleControl } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import constant from "../../constant/descriptions.json";
 import UHIconstant from "../../constant/UHIDesc.json";
 import impsur from "../../images/ImperSurface.png";
@@ -13,8 +13,41 @@ import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
+import data from "../../Shapefiles/cirebonDatabase.json";
 
 const UHIMapScreen = () => {
+  const [uhiValue, setUhiValue] = useState("");
+  const [nightLightValue, setNightLightValue] = useState("");
+  const [ndbiValue, setNdbiValue] = useState("");
+  const [ndviValue, setNdviValue] = useState("");
+  const [kelurahanValue, setKelurahanValue] = useState("-");
+  const [kecamatanValue, setKecamatanValue] = useState("-");
+  const [areaValue, setAreaValue] = useState("-");
+
+  const onEachPolygons = (feature, layer) => {
+    const uhiValue = feature.properties.UHI;
+    const nightLightValue = feature.properties.NL;
+    const ndbiValue = feature.properties.NDBI;
+    const ndviValue = feature.properties.NDVI;
+    const kelurahanValue = feature.properties.Kelurahan;
+    const kecamatanValue = feature.properties.Kecamatan;
+    const areaValue = feature.properties.Luas;
+
+    function someFunc() {
+      setUhiValue(uhiValue);
+      setNightLightValue(nightLightValue);
+      setNdbiValue(ndbiValue);
+      setNdviValue(ndviValue);
+      setKelurahanValue(kelurahanValue);
+      setKecamatanValue(kecamatanValue);
+      setAreaValue(areaValue);
+    }
+    layer.on({
+      click: (event) => {
+        someFunc();
+      },
+    });
+  };
   return (
     <div className="UHIMap-container">
       <div className="UHIMap-Legend-container">
@@ -24,7 +57,7 @@ const UHIMapScreen = () => {
             <h1>UHI MAP</h1>
             <h3>Cirebon City</h3>
             <h4>UHI Value in selected area :</h4>
-            <h2>23 C</h2>
+            <h2>{`${Math.round(uhiValue * 1000) / 1000} C`}</h2>
           </div>
           {/* UHI Legend Title End*/}
           {/* UHI Legend Param */}
@@ -32,25 +65,34 @@ const UHIMapScreen = () => {
             <div className="imp-night-container">
               <div className="impsur-container">
                 <img src={impsur}></img>
-                <h3>{UHIconstant.imper}</h3>
-                <h2>Impervious Surface</h2>
+                <h3>
+                  {UHIconstant.imper} {`${Math.round(ndbiValue * 1000) / 1000}`}
+                </h3>
+                <h2>NDBI</h2>
               </div>
               <div className="nightlight-container">
                 <img src={nightlight}></img>
-                <h3>{UHIconstant.nightlight}</h3>
+                <h3>
+                  {UHIconstant.nightlight}{" "}
+                  {`${Math.round(nightLightValue * 1000) / 1000}`}
+                </h3>
                 <h2>Night Light</h2>
               </div>
             </div>
             <div className="NDVI-antro-container">
               <div className="NDVI-container">
                 <img src={NDVI}></img>
-                <h3>{UHIconstant.NDVI}</h3>
+                <h3>
+                  {UHIconstant.NDVI} {`${Math.round(ndviValue * 1000) / 1000}`}
+                </h3>
                 <h2>NDVI</h2>
               </div>
               <div className="antro-container">
                 <img src={antro}></img>
-                <h3>{UHIconstant.antro}</h3>
-                <h2>Anthropogenic Heat</h2>
+                <h3>
+                  {UHIconstant.antro} {`${Math.round(uhiValue * 1000) / 1000}`}
+                </h3>
+                <h2>Urban Heat Island</h2>
               </div>
             </div>
           </div>
@@ -60,16 +102,16 @@ const UHIMapScreen = () => {
             <h1>More information on selected area : </h1>
             <div className="UHIKeterangan-container">
               <div className="UHIKeterangan-judul">
+                <p>Kelurahan :</p>
                 <p>Kecamatan :</p>
-                <p>Desa :</p>
-                <p>Population :</p>
-                <p>Land Use/Land Cover :</p>
+                <p>City :</p>
+                <p>Area :</p>
               </div>
               <div className="UHIKeterangan-content">
-                <p>Cibeunying Kidul</p>
-                <p>Nambo</p>
-                <p>120000</p>
-                <p>Urban</p>
+                <p>{kelurahanValue}</p>
+                <p>{kecamatanValue}</p>
+                <p>Kota Cirebon</p>
+                <p>{areaValue} Ha</p>
               </div>
             </div>
           </div>
@@ -107,7 +149,7 @@ const UHIMapScreen = () => {
       </div>
       <div className="UHIMap-map-container">
         <MapContainer
-          center={[51.505, -0.09]}
+          center={[-6.733252, 108.552161]}
           zoom={13}
           style={{
             height: "100%",
@@ -120,6 +162,7 @@ const UHIMapScreen = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <GeoJSON data={data} onEachFeature={onEachPolygons}></GeoJSON>
         </MapContainer>
       </div>
     </div>
