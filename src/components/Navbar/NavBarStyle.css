@@ -8,12 +8,15 @@
   max-width: 1170px;
   align-items: center;
   margin: 0 auto;
-  padding: 10px 15px 10px 15px;
+  padding: 8px 15px 8px 15px;
 }
 
 .geoloka-logo-container img {
-  height: 45px;
-  width: 45px;
+  display: flex;
+  height: 42px;
+  width: 42px;
+  align-items: center;
+  justify-content: center;
 }
 
 .link-container a {
