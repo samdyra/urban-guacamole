@@ -23,6 +23,23 @@ const UHIMapScreen = () => {
   const [kelurahanValue, setKelurahanValue] = useState("-");
   const [kecamatanValue, setKecamatanValue] = useState("-");
   const [areaValue, setAreaValue] = useState("-");
+  // const getColor = (d) => {
+  //   return d === "No Tree Cover Lost"
+  //     ? "#00FF00"
+  //     : d === "Tree Cover Lost 2001-2020"
+  //     ? "#FF0000"
+  //     : "#FFEDA0";
+  // };
+  // const style = (feature) => {
+  //   return {
+  //     fillColor: getColor(feature.properties.Class),
+  //     weight: 0,
+  //     opacity: 1,
+  //     color: "",
+  //     dashArray: "",
+  //     fillOpacity: 0.3,
+  //   };
+  // };
 
   const onEachPolygons = (feature, layer) => {
     const uhiValue = feature.properties.UHI;
@@ -162,7 +179,11 @@ const UHIMapScreen = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <GeoJSON data={data} onEachFeature={onEachPolygons}></GeoJSON>
+          <GeoJSON
+            data={data}
+            onEachFeature={onEachPolygons}
+            // style={style}
+          ></GeoJSON>
         </MapContainer>
       </div>
     </div>
