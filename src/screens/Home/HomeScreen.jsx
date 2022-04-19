@@ -11,7 +11,7 @@ const HomeScreen = () => {
         <img src={geolokaLogo}></img>
         <div className="title-desc-container">
           <div className="title-container">
-            <h1>GEOLOKA</h1>
+            <h1>GEOLOKASI</h1>
           </div>
           <div className="desc-container">
             <p>{constant.homeDescription}</p>
