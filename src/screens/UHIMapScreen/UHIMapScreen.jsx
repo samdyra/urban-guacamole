@@ -23,23 +23,32 @@ const UHIMapScreen = () => {
   const [kelurahanValue, setKelurahanValue] = useState("-");
   const [kecamatanValue, setKecamatanValue] = useState("-");
   const [areaValue, setAreaValue] = useState("-");
-  // const getColor = (d) => {
-  //   return d === "No Tree Cover Lost"
-  //     ? "#00FF00"
-  //     : d === "Tree Cover Lost 2001-2020"
-  //     ? "#FF0000"
-  //     : "#FFEDA0";
-  // };
-  // const style = (feature) => {
-  //   return {
-  //     fillColor: getColor(feature.properties.Class),
-  //     weight: 0,
-  //     opacity: 1,
-  //     color: "",
-  //     dashArray: "",
-  //     fillOpacity: 0.3,
-  //   };
-  // };
+
+  const getColor = (d) => {
+    return d == 20.16
+      ? "rgb(181, 237, 240)"
+      : d >= 20.16 && d <= 23.26
+      ? "rgb(116, 180, 232)"
+      : d >= 23.26 && d <= 25.63
+      ? "rgb(31, 131, 224)"
+      : d >= 25.63 && d <= 26.91
+      ? "rgb(29, 68, 184)"
+      : d >= 26.91 && d <= 29.3
+      ? "rgb(9, 9, 145)"
+      : "";
+  };
+
+  const style = (feature) => {
+    return {
+      fillColor: getColor(feature.properties.UHI),
+      weight: 0.8,
+      opacity: 1,
+      border: "solid",
+      color: "rgb(110,110,110)",
+      dashArray: "",
+      fillOpacity: 0.8,
+    };
+  };
 
   const onEachPolygons = (feature, layer) => {
     const uhiValue = feature.properties.UHI;
@@ -65,6 +74,7 @@ const UHIMapScreen = () => {
       },
     });
   };
+
   return (
     <div className="UHIMap-container">
       <div className="UHIMap-Legend-container">
@@ -182,7 +192,7 @@ const UHIMapScreen = () => {
           <GeoJSON
             data={data}
             onEachFeature={onEachPolygons}
-            // style={style}
+            style={style}
           ></GeoJSON>
         </MapContainer>
       </div>
