@@ -117,13 +117,31 @@ const UHIMapScreen = () => {
       border: "solid",
       color: "rgb(110,110,110)",
       dashArray: "",
-      fillOpacity: 0.8,
+      fillOpacity: 0.6,
     };
   };
 
   useEffect(() => {
     toggleModal();
   }, []);
+
+  function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+      fillOpacity: 0.8,
+      weight: 2,
+    });
+  }
+
+  function resetHighlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+      fillOpacity: 0.6,
+      weight: 0.8,
+    });
+  }
 
   const onEachPolygons = (feature, layer) => {
     const uhiValue = feature.properties.UHI;
@@ -133,9 +151,7 @@ const UHIMapScreen = () => {
     const kelurahanValue = feature.properties.Kelurahan;
     const kecamatanValue = feature.properties.Kecamatan;
     const areaValue = feature.properties.Luas;
-    // const onClick = layer.setStyle({ fillOpacity: 0 });
-
-    function someFunc(e) {
+    function someFunc() {
       setUhiValue(uhiValue);
       setNightLightValue(nightLightValue);
       setNdbiValue(ndbiValue);
@@ -148,6 +164,8 @@ const UHIMapScreen = () => {
       click: (e) => {
         someFunc();
       },
+      mouseover: highlightFeature,
+      mouseout: resetHighlightFeature,
     });
   };
 
