@@ -1,3 +1,15 @@
+## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/25087365/samdyra/urban-guacamole/recent-activity/518de2055758245115b3767ca8193649_badge.svg)](https://repography.com)
+
+[![Timeline graph](https://images.repography.com/25087365/samdyra/urban-guacamole/recent-activity/518de2055758245115b3767ca8193649_timeline.svg)](https://github.com/samdyra/urban-guacamole/commits)
+[![Issue status graph](https://images.repography.com/25087365/samdyra/urban-guacamole/recent-activity/518de2055758245115b3767ca8193649_issues.svg)](https://github.com/samdyra/urban-guacamole/issues)
+[![Pull request status graph](https://images.repography.com/25087365/samdyra/urban-guacamole/recent-activity/518de2055758245115b3767ca8193649_prs.svg)](https://github.com/samdyra/urban-guacamole/pulls)
+[![Trending topics](https://images.repography.com/25087365/samdyra/urban-guacamole/recent-activity/518de2055758245115b3767ca8193649_words.svg)](https://github.com/samdyra/urban-guacamole/commits)
+[![Top contributors](https://images.repography.com/25087365/samdyra/urban-guacamole/recent-activity/518de2055758245115b3767ca8193649_users.svg)](https://github.com/samdyra/urban-guacamole/graphs/contributors)
+
+## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Structure
+
+[![Structure](https://images.repography.com/25087365/samdyra/urban-guacamole/structure/cb8ee33e891a5da33a6a7b50c0d79f5e_table.svg)](https://github.com/samdyra/urban-guacamole)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

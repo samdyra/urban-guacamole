@@ -143,6 +143,31 @@ const UHIMapScreen = () => {
             </div>
           </div>
           {/* UHI Legend Info End */}
+          {/* Legends Start */}
+          <div className="UHI-chloropeth-container">
+            <div className="UHI-Chloropeth-title">
+              <h1>Legend</h1>
+            </div>
+            <div className="UHI-chloropeth-legend">
+              <div className="UHI-chloropeth-content">
+                <div className="chloropeth-container">
+                  <p>UHI Value : 20.16 C</p>
+                  <p>UHI Value : 20.16 C - 23.26 C</p>
+                  <p>UHI Value : 23.36 C - 25.63 C</p>
+                  <p>UHI Value : 25.63 C - 26.91 C </p>
+                  <p>UHI Value : 26.91 C - 29.3 C</p>
+                </div>
+                <div className="chloro-symbols">
+                  <div className="chlo1"></div>
+                  <div className="chlo2"></div>
+                  <div className="chlo3"></div>
+                  <div className="chlo4"></div>
+                  <div className="chlo5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Legends End */}
         </div>
         {/* UHI Legend Footer */}
         <div className="UHIFooter-container">

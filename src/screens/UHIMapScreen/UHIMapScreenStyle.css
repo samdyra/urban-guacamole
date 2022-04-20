@@ -279,6 +279,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  padding-bottom: 15px;
 }
 
 .UHIinfo-container h1 {
@@ -422,3 +423,78 @@
   color: #e5e5e5;
   padding-bottom: 20px;
 }
+
+/* Legend chloropeth */
+
+.UHI-chloropeth-container {
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.UHI-Chloropeth-title h1 {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.UHI-chloropeth-legend {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.UHI-chloropeth-content {
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+}
+
+.chloropeth-container p {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+}
+
+.chloro-symbols {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.chlo1 {
+  width: 26px;
+  height: 14px;
+  background: rgb(181, 237, 240);
+}
+
+.chlo2 {
+  width: 26px;
+  height: 14px;
+  background: rgb(116, 180, 232);
+}
+
+.chlo3 {
+  width: 26px;
+  height: 14px;
+  background: rgb(31, 131, 224);
+}
+
+.chlo4 {
+  width: 26px;
+  height: 14px;
+  background: rgb(29, 68, 184);
+}
+
+.chlo5 {
+  width: 26px;
+  height: 14px;
+  background: rgb(9, 9, 145);
+}
+/* Legend chloropeth End */
