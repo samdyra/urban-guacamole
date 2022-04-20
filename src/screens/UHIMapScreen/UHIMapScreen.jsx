@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UHIMapScreenStyle.css";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import constant from "../../constant/descriptions.json";
@@ -14,6 +14,8 @@ import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
 import data from "../../Shapefiles/cirebonDatabase.json";
+import Modal from "../../components/Modal/Modal";
+import paramsDesc from "../../constant/paramsDesc.json";
 
 const UHIMapScreen = () => {
   const [uhiValue, setUhiValue] = useState("");
@@ -23,6 +25,75 @@ const UHIMapScreen = () => {
   const [kelurahanValue, setKelurahanValue] = useState("-");
   const [kecamatanValue, setKecamatanValue] = useState("-");
   const [areaValue, setAreaValue] = useState("-");
+  const [modal, setModal] = useState(false);
+  const [NDBImodal, setNDBIModal] = useState(false);
+  const [NLmodal, setNLModal] = useState(false);
+  const [NDVImodal, setNDVIModal] = useState(false);
+  const [UHImodal, setUHIModal] = useState(false);
+
+  // NDBI Modal
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  // NDBI Modal End
+
+  // NDBI Modal
+  const toggleNDBIModal = () => {
+    setNDBIModal(!NDBImodal);
+  };
+
+  if (NDBImodal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  // NDBI Modal End
+  // Night Light Modal
+  const toggleNLModal = () => {
+    setNLModal(!NLmodal);
+  };
+
+  if (NLmodal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  // Night Light Modal End
+
+  // NDVI Modal
+  const toggleNDVIModal = () => {
+    setNDVIModal(!NDVImodal);
+  };
+
+  if (NDVImodal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  // NDVI Modal End
+
+  // UHI Modal
+  const toggleUHIModal = () => {
+    setUHIModal(!UHImodal);
+  };
+
+  if (UHImodal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  // UHI Modal End
 
   const getColor = (d) => {
     return d == 20.16
@@ -50,6 +121,10 @@ const UHIMapScreen = () => {
     };
   };
 
+  useEffect(() => {
+    toggleModal();
+  }, []);
+
   const onEachPolygons = (feature, layer) => {
     const uhiValue = feature.properties.UHI;
     const nightLightValue = feature.properties.NL;
@@ -58,8 +133,9 @@ const UHIMapScreen = () => {
     const kelurahanValue = feature.properties.Kelurahan;
     const kecamatanValue = feature.properties.Kecamatan;
     const areaValue = feature.properties.Luas;
+    // const onClick = layer.setStyle({ fillOpacity: 0 });
 
-    function someFunc() {
+    function someFunc(e) {
       setUhiValue(uhiValue);
       setNightLightValue(nightLightValue);
       setNdbiValue(ndbiValue);
@@ -69,7 +145,7 @@ const UHIMapScreen = () => {
       setAreaValue(areaValue);
     }
     layer.on({
-      click: (event) => {
+      click: (e) => {
         someFunc();
       },
     });
@@ -78,6 +154,13 @@ const UHIMapScreen = () => {
   return (
     <div className="UHIMap-container">
       <div className="UHIMap-Legend-container">
+        {modal && (
+          <Modal
+            title="Welcome!"
+            toggleModal={toggleModal}
+            desc="Please click one of the polygons on the map to see the statistics on the left!"
+          ></Modal>
+        )}
         <div className="UHILegend-container">
           {/* UHI Legend Title*/}
           <div className="UHI-title">
@@ -90,31 +173,59 @@ const UHIMapScreen = () => {
           {/* UHI Legend Param */}
           <div className="UHIparameter-container">
             <div className="imp-night-container">
-              <div className="impsur-container">
+              <div className="impsur-container" onClick={toggleNDBIModal}>
+                {NDBImodal && (
+                  <Modal
+                    title="What is NDBI?"
+                    toggleModal={toggleNDBIModal}
+                    desc={paramsDesc.NDBIDesc}
+                  ></Modal>
+                )}
                 <img src={impsur}></img>
                 <h3>
                   {UHIconstant.imper} {`${Math.round(ndbiValue * 1000) / 1000}`}
                 </h3>
                 <h2>NDBI</h2>
               </div>
-              <div className="nightlight-container">
+              <div className="nightlight-container" onClick={toggleNLModal}>
+                {NLmodal && (
+                  <Modal
+                    title="What is Night Light?"
+                    toggleModal={toggleNLModal}
+                    desc={paramsDesc.NLDesc}
+                  ></Modal>
+                )}
                 <img src={nightlight}></img>
                 <h3>
-                  {UHIconstant.nightlight}{" "}
+                  {UHIconstant.nightlight}
                   {`${Math.round(nightLightValue * 1000) / 1000}`}
                 </h3>
                 <h2>Night Light</h2>
               </div>
             </div>
             <div className="NDVI-antro-container">
-              <div className="NDVI-container">
+              <div className="NDVI-container" onClick={toggleNDVIModal}>
+                {NDVImodal && (
+                  <Modal
+                    title="What is NDVI?"
+                    toggleModal={toggleNDVIModal}
+                    desc={paramsDesc.NDVIDesc}
+                  ></Modal>
+                )}
                 <img src={NDVI}></img>
                 <h3>
                   {UHIconstant.NDVI} {`${Math.round(ndviValue * 1000) / 1000}`}
                 </h3>
                 <h2>NDVI</h2>
               </div>
-              <div className="antro-container">
+              <div className="antro-container" onClick={toggleUHIModal}>
+                {UHImodal && (
+                  <Modal
+                    title="What is UHI?"
+                    toggleModal={toggleUHIModal}
+                    desc={paramsDesc.UHIDesc}
+                  ></Modal>
+                )}
                 <img src={antro}></img>
                 <h3>
                   {UHIconstant.antro} {`${Math.round(uhiValue * 1000) / 1000}`}
