@@ -95,6 +95,8 @@ const UHIMapScreen = () => {
 
   // UHI Modal End
 
+  // Styling functions
+
   const getColor = (d) => {
     return d == 20.16
       ? "rgb(181, 237, 240)"
@@ -121,10 +123,6 @@ const UHIMapScreen = () => {
     };
   };
 
-  useEffect(() => {
-    toggleModal();
-  }, []);
-
   function highlightFeature(e) {
     var layer = e.target;
 
@@ -143,6 +141,10 @@ const UHIMapScreen = () => {
     });
   }
 
+  // Styling functions End
+
+  //geojson logic
+
   const onEachPolygons = (feature, layer) => {
     const uhiValue = feature.properties.UHI;
     const nightLightValue = feature.properties.NL;
@@ -151,7 +153,7 @@ const UHIMapScreen = () => {
     const kelurahanValue = feature.properties.Kelurahan;
     const kecamatanValue = feature.properties.Kecamatan;
     const areaValue = feature.properties.Luas;
-    function someFunc() {
+    function paramsFunc() {
       setUhiValue(uhiValue);
       setNightLightValue(nightLightValue);
       setNdbiValue(ndbiValue);
@@ -162,12 +164,32 @@ const UHIMapScreen = () => {
     }
     layer.on({
       click: (e) => {
-        someFunc();
+        paramsFunc();
       },
       mouseover: highlightFeature,
       mouseout: resetHighlightFeature,
     });
   };
+
+  //geojson logic end
+
+  // init function logic
+  const initFunction = () => {
+    toggleModal();
+    setUhiValue("24.96");
+    setNightLightValue("13.517");
+    setNdbiValue("24.974");
+    setNdviValue("0.234");
+    setKelurahanValue("Harjamukti");
+    setKecamatanValue("Harjamukti");
+    setAreaValue("245");
+  };
+
+  useEffect(() => {
+    initFunction();
+  }, []);
+
+  // init function logic end
 
   return (
     <div className="UHIMap-container">
