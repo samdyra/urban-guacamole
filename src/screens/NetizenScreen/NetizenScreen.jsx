@@ -10,6 +10,7 @@ import footerLine from "../../images/miniFooterLine.png";
 import constant from "../../constant/descriptions.json";
 import Tweet from "../../components/Tweet/Tweet";
 import { mockUserData } from "../../constant/mockUserData";
+import { MinimapControl } from "../../components/minimap/miniMap";
 
 const NetizenScreen = () => {
   return (
@@ -89,7 +90,7 @@ const NetizenScreen = () => {
 
       <div className="netizen-map-container">
         <MapContainer
-          center={[51.505, -0.09]}
+          center={[-6.733252, 108.552161]}
           zoom={13}
           style={{
             height: "100%",
@@ -102,6 +103,7 @@ const NetizenScreen = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <MinimapControl></MinimapControl>
         </MapContainer>
       </div>
     </div>

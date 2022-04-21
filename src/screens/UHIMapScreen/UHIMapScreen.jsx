@@ -16,6 +16,7 @@ import footerLine from "../../images/miniFooterLine.png";
 import data from "../../Shapefiles/cirebonDatabase.json";
 import Modal from "../../components/Modal/Modal";
 import paramsDesc from "../../constant/paramsDesc.json";
+import { MinimapControl } from "../../components/minimap/miniMap";
 
 const UHIMapScreen = () => {
   const [uhiValue, setUhiValue] = useState("");
@@ -370,6 +371,7 @@ const UHIMapScreen = () => {
             onEachFeature={onEachPolygons}
             style={style}
           ></GeoJSON>
+          <MinimapControl position="topright"></MinimapControl>
         </MapContainer>
       </div>
     </div>
