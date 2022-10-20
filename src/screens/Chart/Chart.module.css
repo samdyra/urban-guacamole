@@ -1,0 +1,74 @@
+.bc {
+  background-color: rgba(254, 249, 243, 1);
+  background-image: url("../../Assets/Images/hiasanGVT.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+.headerWrapper {
+  height: calc(100vh - 61px);
+  max-width: 1280px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.headerText {
+  width: 302px;
+  height: 208px;
+  margin-left: 101px;
+  margin-top: 300px;
+  justify-content: center;
+  position: absolute;
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 108.5%;
+  text-align: justify;
+  color: #623a20;
+  text-shadow: 2px 7px 8px rgba(0, 0, 0, 0.25);
+}
+
+.latarContainer {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.latarTitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: #623a20;
+  padding-bottom: 20px;
+  padding-top: 50px;
+}
+
+.latarContent {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 137.5%;
+  text-align: justify;
+  color: #272727;
+  padding-inline: 80px;
+  padding-bottom: 50px;
+}
+
+.hiasanStyle img {
+  width: 1120px;
+  height: 698px;
+}
+
+.hiasanStyle {
+  display: flex;
+  justify-content: center;
+}
