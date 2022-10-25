@@ -1,8 +1,7 @@
 .bc {
-  background-color: rgba(254, 249, 243, 1);
-  background-image: url("../../Assets/Images/hiasanGVT.png");
   background-repeat: no-repeat;
-  background-position-x: right;
+
+     background-position-x: right;
 }
 
 .headerWrapper {

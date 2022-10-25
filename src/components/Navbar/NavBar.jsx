@@ -13,6 +13,7 @@ const NavBar = () => {
           <a href="/">Home</a>
           <a href="/UHIScreen">UHI Map</a>
           <a href="/RTRWScreen">RDTR Zoning Map</a>
+          <a href="/Chart">Statistics</a>
           <a href="/NetizenScreen">Netizen Contribution</a>
         </div>
       </div>

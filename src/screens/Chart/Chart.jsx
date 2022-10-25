@@ -1,26 +1,15 @@
 import React from "react";
-import Navbar from "../../ComponentsV2/Navbar";
-import style from "./FloodModel.module.css";
-import fotoIMG from "../../Assets/Images/logoKemker.png";
-import Chart from "../../Components/chart/Chart";
-import Table from "../../Components/table/Table";
-import Featured from "../../Components/featured/Featured";
-import Widget from "../../Components/widget/Widget";
-import NavBarDefault from "../../ComponentsV2/NavbarDefault";
+import style from "./Chart.module.css";
+import Chart from "../../components/chart/Chart";
+import Table from "../../components/table/Table";
+import Featured from "../../components/featured/Featured";
+import Widget from "../../components/widget/Widget";
 import "./home.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Chart = () => {
-  const {
-    headerWrapper,
-    headerText,
-    latarContainer,
-    latarTitle,
-    latarContent,
-    hiasanStyle,
-    bc,
-  } = style;
+const ChartScreen = () => {
+  const {} = style;
   const [data, setData] = useState("");
 
   const fetchData = () => {
@@ -45,7 +34,6 @@ const Chart = () => {
   return (
     <div className="home">
       <div className="homeContainer">
-        <NavBarDefault></NavBarDefault>
         <div className="widgets">
           <Widget type="user" actualData={data} />
           <Widget type="order" actualData={data} />
@@ -69,4 +57,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default ChartScreen;

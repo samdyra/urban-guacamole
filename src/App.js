@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar/NavBar";
 import RTRWMapScreen from "./screens/RTRWScreen/RTRWMapScreen";
 import UHIMapScreen from "./screens/UHIMapScreen/UHIMapScreen";
 import NetizenScreen from "./screens/NetizenScreen/NetizenScreen";
+import ChartScreen from "./screens/Chart/Chart.jsx"
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           <HomeScreen></HomeScreen>
           <Features></Features>
           <Footer></Footer>
+        </Route>
+        <Route exact path="/Chart">
+          <ChartScreen></ChartScreen>
         </Route>
         <Route exact path="/RTRWScreen">
           <RTRWMapScreen></RTRWMapScreen>
