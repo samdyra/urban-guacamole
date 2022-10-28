@@ -1,30 +1,24 @@
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../Config/firebase/index";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import style from "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
-import { isUserLevel9 } from "../../Helpers";
 
 export default function Login() {
-  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let isAdmin = false
+  let isAdmin = false;
 
   const handleLogin = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         const user = getAuth();
-        isAdmin = user.currentUser.displayName === "userLevel9"
+        isAdmin = user.currentUser.displayName === "userLevel9";
       })
       .then(() => {
-        if (isAdmin) {
-          navigate("/admin/kegiatan")
-        } else navigate("/Pojokimg")
+        window.open("/Admin");
       })
-      .catch(() => toast(error.code, { type: "error" }))
+      .catch((error) => toast(error.code, { type: "error" }));
   };
   return (
     <div style={{ paddingTop: 100, paddingBottom: 100 }}>
@@ -34,6 +28,7 @@ export default function Login() {
           <label for="tab-1" class="tab">
             Sign In
           </label>
+          `
           <input id="tab-2" type="radio" name="tab" class="sign-up" />
           <label for="tab-2" class="tab"></label>
           <div class="login-form">

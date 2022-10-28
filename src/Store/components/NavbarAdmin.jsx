@@ -2,7 +2,7 @@ import React from "react";
 
 const NavbarAdmin = () => {
   return (
-    <div className="admin-navbar" style={{paddingTop: 100}} >
+    <div className="admin-navbar" >
       <a href="/admin/kegiatan">HOMEPAGE</a>
       <a href="/admin/FAQ">POJOK IMG</a>
       <a href="/admin/internal">INTERNAL</a>

@@ -7,7 +7,8 @@ import NavBar from "./components/Navbar/NavBar";
 import RTRWMapScreen from "./screens/RTRWScreen/RTRWMapScreen";
 import UHIMapScreen from "./screens/UHIMapScreen/UHIMapScreen";
 import NetizenScreen from "./screens/NetizenScreen/NetizenScreen";
-import ChartScreen from "./screens/Chart/Chart.jsx"
+import ChartScreen from "./screens/Chart/Chart.jsx";
+import { LoginScreen, Form } from "./Store";
 
 function App() {
   return (
@@ -30,6 +31,15 @@ function App() {
         </Route>
         <Route exact path="/NetizenScreen">
           <NetizenScreen></NetizenScreen>
+        </Route>
+        <Route exact path="/Login">
+          <LoginScreen></LoginScreen>
+        </Route>
+        <Route exact path="/Admin">
+          <Form></Form>
+        </Route>
+        <Route exact path="/Form">
+          <Form></Form>
         </Route>
       </Switch>
     </Router>

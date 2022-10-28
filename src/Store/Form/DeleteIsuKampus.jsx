@@ -8,12 +8,12 @@ export default function DeleteKamerad({ id, image }) {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this kamerad?")) {
       try {
-        await deleteDoc(doc(db, "internal", id));
-        toast("activities deleted successfully", { type: "success" });
+        await deleteDoc(doc(db, "temperature", id));
+        toast("Isu Kampus deleted successfully", { type: "success" });
         const storageRef = ref(storage, image);
         await deleteObject(storageRef);
       } catch (error) {
-        toast("Error deleting activities", { type: "error" });
+        toast("Error deleting isu Kampus", { type: "error" });
       }
     }
   };
