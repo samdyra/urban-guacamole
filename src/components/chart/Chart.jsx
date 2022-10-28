@@ -3,6 +3,7 @@ import {
   AreaChart,
   Area,
   XAxis,
+  YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
@@ -11,55 +12,20 @@ import {
 const Chart = ({ aspect, title, actualData }) => {
   const data = [
     {
-      name: "H-1",
+      name: "2010",
       Target: 0,
-      aktualisasi: actualData ? actualData[0].hari1 : 0,
+      aktualisasi: 27.21,
     },
     {
-      name: "H-2",
+      name: "2015",
       Target: 0.15,
-      aktualisasi: actualData ? actualData[0].hari2 : 0,
+      aktualisasi: 28.11,
     },
     {
-      name: "H-3",
+      name: "2020",
       Target: 0.3,
-      aktualisasi: actualData ? actualData[0].hari3 : 0,
-    },
-    {
-      name: "H-4",
-      Target: 0.475,
-      aktualisasi: actualData ? actualData[0].hari4 : 0,
-    },
-    {
-      name: "H-5",
-      Target: 0.545,
-      aktualisasi: actualData ? actualData[0].hari5 : 0,
-    },
-    {
-      name: "H-6",
-      Target: 0.605,
-      aktualisasi: actualData ? actualData[0].hari6 : 0,
-    },
-    {
-      name: "H-7",
-      Target: 0.665,
-      aktualisasi: actualData ? actualData[0].hari7 : 0,
-    },
-    {
-      name: "H-8",
-      Target: 0.725,
-      aktualisasi: actualData ? actualData[0].hari8 : 0,
-    },
-    {
-      name: "H-9",
-      Target: 0.785,
-      aktualisasi: actualData ? actualData[0].hari9 : 0,
-    },
-    {
-      name: "H-10",
-      Target: 1,
-      aktualisasi: actualData ? actualData[0].hari10 : 0,
-    },
+      aktualisasi: 28.74,
+    }
   ];
 
   return (
@@ -73,16 +39,17 @@ const Chart = ({ aspect, title, actualData }) => {
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>
-            <linearGradient id="Target" x1="0" y1="0" x2="0" y2="1">
+            {/* <linearGradient id="Target" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
               <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-            </linearGradient>
+            </linearGradient> */}
             <linearGradient id="aktualisasi" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#FFA500" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#FFA500" stopOpacity={0} />
+              <stop offset="10%" stopColor="#FFA500" stopOpacity={0.8} />
+              <stop offset="75%" stopColor="#FFA500" stopOpacity={0} />
             </linearGradient>
           </defs>
           <XAxis dataKey="name" stroke="gray" />
+          <YAxis type="number" domain={[20, 45]} />
           <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
           <Tooltip />
           <Area

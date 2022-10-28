@@ -20,12 +20,12 @@ const Features = () => {
           </div>
           <div className="RTRWfeature-container">
             <img src={RTRW}></img>
-            <a href="/RTRWScreen">RTRW Zoning Map</a>
+            <a href="/Chart">Statistics</a>
             <p>{constant.RTRWDescription}</p>
           </div>
           <div className="Netizenfeature-container">
             <img src={netizen}></img>
-            <a href="/NetizenScreen">Netizen Contribution</a>
+            <a href="/NetizenScreen">People Contributions</a>
             <p>{constant.NetizenDescription}</p>
           </div>
         </div>

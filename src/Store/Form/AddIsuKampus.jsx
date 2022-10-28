@@ -140,7 +140,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
         <div className="formadmin">
           <label htmlFor="">Latitude</label>
           <textarea
-            name="temp"
+            name="lat"
             className="form-control"
             value={lat}
             onChange={(e) => handleChange(e)}
@@ -149,7 +149,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
         <div className="formadmin">
           <label htmlFor="">Longitude</label>
           <textarea
-            name="temp"
+            name="long"
             className="form-control"
             value={long}
             onChange={(e) => handleChange(e)}

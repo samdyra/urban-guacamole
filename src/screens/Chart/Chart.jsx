@@ -43,7 +43,7 @@ const ChartScreen = () => {
         <div className="charts">
           <Featured iniHariKe={iniHariKe} actualData={data} />
           <Chart
-            title="Target dan Aktualisasi Kurva S (%)"
+            title="Mean UHI Per 5 Year in Cirebon (Celcius)"
             aspect={2.5 / 1}
             actualData={data}
           />

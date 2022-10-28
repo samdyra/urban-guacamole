@@ -10,28 +10,28 @@ const Widget = ({ type, actualData }) => {
   switch (type) {
     case "user":
       data = {
-        title: "PENGUKURAN GNSS",
+        title: "RATA-RATA UHI (2020)",
         isMoney: false,
-        progress: actualData ? actualData[0].progressGNSS : 0,
+        progress: 28.74,
       };
       break;
     case "order":
       data = {
-        title: "PENGUKURAN KDH",
+        title: "RATA-RATA NDVI (2020)",
         isMoney: false,
         progress: actualData ? actualData[0].progressKDH : 0,
       };
       break;
     case "earning":
       data = {
-        title: "PENGUKURAN KDV",
+        title: "RATA-RATA NDBI (2020)",
         isMoney: false,
         progress: actualData ? actualData[0].progressKDV : 0,
       };
       break;
     case "balance":
       data = {
-        title: "PENGUKURAN DETAIL SITUASI",
+        title: "RATA-RATA NIGHT LIGHT (2020)",
         isMoney: false,
         progress: actualData ? actualData[0].detailSituasi : 0,
       };
@@ -44,9 +44,9 @@ const Widget = ({ type, actualData }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         {data.progress == 100 ? (
-          <span className="counterSuccess">{data.progress}%</span>
+          <span className="counterSuccess">{data.progress}</span>
         ) : (
-          <span className="counter">{data.progress}%</span>
+          <span className="counter">{data.progress}</span>
         )}
 
         <span className="link">{data.link}</span>

@@ -16,6 +16,7 @@ import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
 import constant from "../../constant/descriptions.json";
 import Tweet from "../../components/Tweet/Tweet";
+import PopUpImage from "../../components/popup";
 import { mockUserData } from "../../constant/mockUserData";
 import { MinimapControl } from "../../components/minimap/miniMap";
 import {
@@ -26,7 +27,6 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { auth, db } from "../../Config/firebase/index";
-
 const NetizenScreen = () => {
   const [story, setStory] = useState([]);
 
@@ -41,7 +41,6 @@ const NetizenScreen = () => {
       setStory(story);
     });
   }, []);
-  console.log(story);
   return (
     <div className="netizen-container">
       <div className="netizen-legend-map-container">
@@ -59,17 +58,28 @@ const NetizenScreen = () => {
             <div className="hot">
               <p>
                 Contribute Data From you area{" "}
-                <u style={{ textStyle: "underline" }}>here!</u>
+                <a href="/Form">
+                  <u style={{ textStyle: "underline" }}>here!</u>
+                </a>
               </p>
             </div>
           </div>
           {/* Netizen tag end*/}
           {/* Netizen Tweets*/}
-          <div>
+          <div
+            style={{
+              height: "550px",
+              overflowY: "scroll",
+              marginTop: 10,
+            }}
+          >
             {story &&
-              story.slice(0, 5).map((data) => {
-                return <Tweet data={data}></Tweet>;
-              })}
+              story
+                .slice(0)
+                .reverse()
+                .map((data) => {
+                  return <Tweet data={data}></Tweet>;
+                })}
           </div>
           {/* Netizen Tweets End*/}
           {/* Netizen Tweets logo*/}
@@ -126,24 +136,18 @@ const NetizenScreen = () => {
                 <>
                   <CircleMarker
                     center={[data.latitude, data.longitude]}
-                    radius={data.accuracy * 2}
+                    radius={30}
                     fillColor={"red"}
                     weight={0}
                   >
                     <Popup>
-                      <Tweet data={data}></Tweet>
+                      <PopUpImage data={data}></PopUpImage>
                     </Popup>
                   </CircleMarker>
                   <Marker position={[data.latitude, data.longitude]}></Marker>
                 </>
               );
             })}
-          {/* {story &&
-            story.map((data) => {
-              return (
-                
-              );
-            })} */}
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

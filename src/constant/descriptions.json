@@ -1,7 +1,7 @@
 {
   "homeDescription": "Geoloka is a dynamic WebGIS that can identify UHI based on several parameters, i.e., NDVI, NDBI, and night-time light. This website contains three main maps, namely UHI maps, RTRW/RDTR (detailed spatial planning) maps, and netizens’ contribution map that can show anthropogenic heat values. These maps are expected to be used to mitigate the negative effects of UHI on the environment and can be used as the basis for monitoring UHI in urban strategic planning, urban temperature control, and input for government policies related to the environment in the future. ",
   "UHIDescription": "This map shows UHI value in Cirebon City for its spatial unit, urban village. Urban heat islands is a condition when urbanized areas experience much warmer temperature than the rural areas. The combined parameters to get the UHI value are NDVI, NDBI, and night time light. Check this out!",
-  "RTRWDescription": "Rencana Detail Tata Ruang (RDTR) or detailed spatial planning is a map that contains provisions for spatial use on a clear scale. With this map, a reference for the granting of space utilization permits can be formed. Let's take a look what's in it!",
-  "NetizenDescription": "This map can indicate anthropogenic heat based on information from netizens' tweets. With a few keywords, your tweets can help us identify anthropogenic heat. Just click and try this!",
+  "RTRWDescription": "This feature shows the more detailed statistics of UHI in Cirebon City, along with its parameters. This data shown on this page also dynamically updated with the data sourced from people contributions",
+  "NetizenDescription": "This map can indicate anthropogenic heat based on information from people contribution. With a few clicks, your can help us identify anthropogenic heat. Just click and fill out the form!",
   "copyright": "Copyright © 2022 Geoloka. All rights reserved."
 }

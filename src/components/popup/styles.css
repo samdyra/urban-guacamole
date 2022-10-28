@@ -1,0 +1,38 @@
+.popup-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.temp-temp-container {
+    display: flex;
+    align-items: center;
+}
+
+.popup-container {
+    width: 200px;
+    height: 150px;
+    font-family: poppins;
+}
+
+.temp-temp-container img {
+   
+}
+
+.popup-container img {
+    height: 140px;
+    width: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.temp-container {
+    /* display: flex; */
+    width: 100px;
+}
+
+.temp-value {
+    color: red;
+    font-size: 20px;
+    margin-top: 20px;
+}
