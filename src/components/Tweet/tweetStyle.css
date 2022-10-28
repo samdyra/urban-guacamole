@@ -2,7 +2,7 @@
   /* border: 3px solid red; */
   border: 2px solid #9f9f9f;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 50px 50px 50px;
+  border-radius: 20px;
   margin-top: 15px;
 }
 
@@ -16,6 +16,8 @@
 .tweet-image img {
   width: 68px;
   height: 68px;
+  border-radius: 8px;
+  
 }
 
 .all-tweet-texts-container {
@@ -31,6 +33,7 @@
 .tweet-id-container {
   display: flex;
   /* border: 3px solid red; */
+  justify-content: space-between;
   width: 220px;
   padding-left: 10px;
 }
@@ -80,5 +83,14 @@
   line-height: 24px;
   color: #000000;
   padding-left: 10px;
-  /* border: 3px solid red; */
+}
+
+.tweet-tweet-container h1 {
+
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  color: #c01d1d;
 }

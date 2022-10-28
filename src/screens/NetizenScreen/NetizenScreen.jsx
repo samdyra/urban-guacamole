@@ -1,5 +1,12 @@
-import React from "react";
-import { MapContainer, TileLayer, GeoJSON, ScaleControl } from "react-leaflet";
+import React, { useEffect, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  GeoJSON,
+  Marker,
+  Popup,
+  CircleMarker,
+} from "react-leaflet";
 import "./NetizenScreenStyle.css";
 import geolokaLogo from "../../images/GeolokaLogo.png";
 import facebook from "../../images/facebook.png";
@@ -11,44 +18,58 @@ import constant from "../../constant/descriptions.json";
 import Tweet from "../../components/Tweet/Tweet";
 import { mockUserData } from "../../constant/mockUserData";
 import { MinimapControl } from "../../components/minimap/miniMap";
+import {
+  query,
+  collection,
+  onSnapshot,
+  limit,
+  orderBy,
+} from "firebase/firestore";
+import { auth, db } from "../../Config/firebase/index";
 
 const NetizenScreen = () => {
+  const [story, setStory] = useState([]);
+
+  useEffect(() => {
+    const storyRef = collection(db, "temperature");
+    const q = query(storyRef, orderBy("datems"));
+    onSnapshot(q, (snapshot) => {
+      const story = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setStory(story);
+    });
+  }, []);
+  console.log(story);
   return (
     <div className="netizen-container">
       <div className="netizen-legend-map-container">
         <div className="netizen-legend-container">
           {/* Netizen Title */}
           <div className="netizen-title">
-            <h1>HOT TWEETS</h1>
-            <h2>Cirebon City</h2>
-            <p>Tweets on selected area:</p>
-            <h3>12 tweets found!</h3>
+            <h1>PEOPLE CONTRIBUTIONS</h1>
+            <h2>Bali City</h2>
+            <p>Reports on selected area:</p>
+            <h3>{story.length} Reports found!</h3>
           </div>
           {/* Netizen Title End */}
           {/* Netizen tag */}
           <div className="netizen-tag">
             <div className="hot">
-              <p>hot</p>
-              <div>x</div>
-            </div>
-            <div className="pollution">
-              <p>pollution</p>
-              <div>x</div>
-            </div>
-            <div className="temperature">
-              <p>temperature</p>
-              <div>x</div>
-            </div>
-            <div className="add-edit">
-              <p>add/edit</p>
+              <p>
+                Contribute Data From you area{" "}
+                <u style={{ textStyle: "underline" }}>here!</u>
+              </p>
             </div>
           </div>
           {/* Netizen tag end*/}
           {/* Netizen Tweets*/}
           <div>
-            {mockUserData.map((data) => {
-              return <Tweet data={data}></Tweet>;
-            })}
+            {story &&
+              story.slice(0, 5).map((data) => {
+                return <Tweet data={data}></Tweet>;
+              })}
           </div>
           {/* Netizen Tweets End*/}
           {/* Netizen Tweets logo*/}
@@ -90,7 +111,7 @@ const NetizenScreen = () => {
 
       <div className="netizen-map-container">
         <MapContainer
-          center={[-6.733252, 108.552161]}
+          center={[-8.7893678, 115.1792761]}
           zoom={13}
           style={{
             height: "100%",
@@ -99,11 +120,35 @@ const NetizenScreen = () => {
             boxShadow: "-2px 3px 5px 0 rgba(0,.9,0,.4)",
           }}
         >
+          {story &&
+            story.map((data) => {
+              return (
+                <>
+                  <CircleMarker
+                    center={[data.latitude, data.longitude]}
+                    radius={data.accuracy * 2}
+                    fillColor={"red"}
+                    weight={0}
+                  >
+                    <Popup>
+                      <Tweet data={data}></Tweet>
+                    </Popup>
+                  </CircleMarker>
+                  <Marker position={[data.latitude, data.longitude]}></Marker>
+                </>
+              );
+            })}
+          {/* {story &&
+            story.map((data) => {
+              return (
+                
+              );
+            })} */}
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <MinimapControl></MinimapControl>
+          <MinimapControl />
         </MapContainer>
       </div>
     </div>

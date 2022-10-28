@@ -17,7 +17,8 @@ export default function AddKamerad({ latitude, longitude, acc }) {
     setLat(latitude);
     setFormData({ ...formData, latitude: latitude, longitude: longitude, date: moment().format("HH:mm MMMM DD YYYY") });
   }, [latitude, longitude]);
-
+  const date = moment().valueOf()
+  console.log(date)
   const [formData, setFormData] = useState({
     nama: "",
     image: "",
@@ -27,8 +28,6 @@ export default function AddKamerad({ latitude, longitude, acc }) {
     temp: "",
     place: "",
   });
-  console.log(formData)
-  console.log(lat, long)
 
   const [progress, setProgress] = useState(0);
 
@@ -89,6 +88,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             place: formData.place,
             image: url,
             date: formData.date,
+            datems: date,
             temp: formData.temp,
             accuracy: acc,
             latitude: lat,
