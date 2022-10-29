@@ -522,30 +522,30 @@
 .chlo1 {
   width: 26px;
   height: 14px;
-  background: rgb(181, 237, 240);
+  background: rgb(0, 169, 11);
 }
 
 .chlo2 {
   width: 26px;
   height: 14px;
-  background: rgb(116, 180, 232);
+  background: rgb(4, 215, 71);
 }
 
 .chlo3 {
   width: 26px;
   height: 14px;
-  background: rgb(31, 131, 224);
+  background: rgb(255, 217, 0);
 }
 
 .chlo4 {
   width: 26px;
   height: 14px;
-  background: rgb(29, 68, 184);
+  background: rgb(255, 171, 3);
 }
 
 .chlo5 {
   width: 26px;
   height: 14px;
-  background: rgb(9, 9, 145);
+  background: rgb(226, 1, 1);
 }
 /* Legend chloropeth End */
