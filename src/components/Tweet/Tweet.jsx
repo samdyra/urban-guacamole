@@ -6,7 +6,7 @@ const Tweet = ({ data }) => {
   return (
     <div className="tweet-container">
       <div className="tweet-image-container">
-        <div className="tweet-image">
+       <div className="tweet-image">
           <img src={data.image}></img>
         </div>
         <div className="all-tweet-texts-container">

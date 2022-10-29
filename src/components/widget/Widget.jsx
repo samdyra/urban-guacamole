@@ -10,30 +10,30 @@ const Widget = ({ type, actualData }) => {
   switch (type) {
     case "user":
       data = {
-        title: "RATA-RATA UHI (2020)",
+        title: "MEAN UHI (2020)",
         isMoney: false,
         progress: 28.74,
       };
       break;
     case "order":
       data = {
-        title: "RATA-RATA NDVI (2020)",
+        title: "MEAN NDVI (2020)",
         isMoney: false,
-        progress: actualData ? actualData[0].progressKDH : 0,
+        progress: 0.302,
       };
       break;
     case "earning":
       data = {
-        title: "RATA-RATA NDBI (2020)",
+        title: "MEAN NDBI (2020)",
         isMoney: false,
-        progress: actualData ? actualData[0].progressKDV : 0,
+        progress: 21,
       };
       break;
     case "balance":
       data = {
-        title: "RATA-RATA NIGHT LIGHT (2020)",
+        title: "MEAN NIGHT LIGHT (2020)",
         isMoney: false,
-        progress: actualData ? actualData[0].detailSituasi : 0,
+        progress: 13.1,
       };
       break;
     default:

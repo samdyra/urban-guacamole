@@ -7,11 +7,30 @@ import Widget from "../../components/widget/Widget";
 import "./home.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import {
+  query,
+  collection,
+  onSnapshot,
+  limit,
+  orderBy,
+} from "firebase/firestore";
+import { auth, db } from "../../Config/firebase/index";
 const ChartScreen = () => {
   const {} = style;
   const [data, setData] = useState("");
+  const [story, setStory] = useState([]);
 
+  useEffect(() => {
+    const storyRef = collection(db, "temperature");
+    const q = query(storyRef, orderBy("datems"));
+    onSnapshot(q, (snapshot) => {
+      const story = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setStory(story);
+    });
+  }, []);
   const fetchData = () => {
     axios
       .get(
@@ -30,7 +49,6 @@ const ChartScreen = () => {
     fetchData();
   }, []);
 
-  // console.log(data.map((coor) => coor.x));
   return (
     <div className="home">
       <div className="homeContainer">
@@ -41,7 +59,7 @@ const ChartScreen = () => {
           <Widget type="balance" actualData={data} />
         </div>
         <div className="charts">
-          <Featured iniHariKe={iniHariKe} actualData={data} />
+          <Featured iniHariKe={iniHariKe} actualData={data} dbData={story}/>
           <Chart
             title="Mean UHI Per 5 Year in Cirebon (Celcius)"
             aspect={2.5 / 1}
@@ -49,8 +67,8 @@ const ChartScreen = () => {
           />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Hasil Pengukuran Koordinat</div>
-          <Table data={data} />
+          <div className="listTitle">Detailed Contributed Data</div>
+          <Table data={data} dbData={story} />
         </div>
       </div>
     </div>

@@ -13,10 +13,15 @@
   margin: 15px;
 }
 
+.tweet-image {
+  background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
+}
+
 .tweet-image img {
   width: 68px;
   height: 68px;
   border-radius: 8px;
+  background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
   
 }
 

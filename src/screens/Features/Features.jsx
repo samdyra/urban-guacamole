@@ -1,9 +1,10 @@
 import React from "react";
 import "./FeaturesStyle.css";
 import constant from "../../constant/descriptions.json";
-import UHIMap from "../../images/UHIMap.png";
-import RTRW from "../../images/RTRW.png";
-import netizen from "../../images/Netizen.png";
+import uhiex from "../../images/uhiex.png"
+import chartex from "../../images/chartex.png"
+import peopleex from "../../images/peopleex.png"
+
 
 const Features = () => {
   return (
@@ -14,17 +15,17 @@ const Features = () => {
         </div>
         <div className="feature-container">
           <div className="UHIfeature-container">
-            <img src={UHIMap}></img>
+            <img src={uhiex}></img>
             <a href="/UHIScreen">UHI Map</a>
             <p>{constant.UHIDescription}</p>
           </div>
           <div className="RTRWfeature-container">
-            <img src={RTRW}></img>
+            <img src={chartex}></img>
             <a href="/Chart">Statistics</a>
             <p>{constant.RTRWDescription}</p>
           </div>
           <div className="Netizenfeature-container">
-            <img src={netizen}></img>
+            <img src={peopleex}></img>
             <a href="/NetizenScreen">People Contributions</a>
             <p>{constant.NetizenDescription}</p>
           </div>

@@ -5,7 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 
-const Featured = ({ actualData, iniHariKe }) => {
+const Featured = ({ actualData, iniHariKe, dbData }) => {
   const targetBesok =
     iniHariKe == 1
       ? 15
@@ -52,25 +52,26 @@ const Featured = ({ actualData, iniHariKe }) => {
   const ketertinggalan =
     Math.round((parseFloat(totalProgress) - parseFloat(targetHariIni)) * 100) /
     100;
+  const totalData = dbData && dbData.length
   return (
     <div className="featured">
       <div className="top">
-        <h1 className="title">Total Progress</h1>
+        <h1 className="title">General Statistics</h1>
         <MoreVertIcon fontSize="small" />
       </div>
       <div className="bottom">
         <div className="featuredChart">
           <CircularProgressbar
-            value={totalProgress}
-            text={`${totalProgress}%`}
+            value={totalData}
+            text={`${totalData}`}
             strokeWidth={5}
           />
         </div>
-        <p className="title">Total Progress Sampai Hari Ini</p>
+        <p className="title">Total Contribution Today<br></br>Target : 100 per day</p>
         <p className="desc">
-          Update progress dilakukan pada malam hari setiap harinya.
+          Update May be delayed depending on your location and internet connection .
         </p>
-        <div className="summary">
+        {/* <div className="summary">
           <div className="item">
             <div className="itemTitle">Target Besok</div>
             <div className="itemResult positive">
@@ -99,7 +100,7 @@ const Featured = ({ actualData, iniHariKe }) => {
               </div>
             ) : null}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

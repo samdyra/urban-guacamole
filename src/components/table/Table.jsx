@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const List = ({ data }) => {
+const List = ({ data, dbData }) => {
   const coor = data ? data : null;
   const rows = [
     {
@@ -51,25 +51,29 @@ const List = ({ data }) => {
       <Table sx={{ minWtitikth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Nama Titik</TableCell>
-            <TableCell className="tableCell">Koordinat Northing (m)</TableCell>
-            <TableCell className="tableCell">Koordinat Easting (m)</TableCell>
-            <TableCell className="tableCell">Elevasi (m)</TableCell>
+            <TableCell className="tableCell">id</TableCell>
+            <TableCell className="tableCell">latitude</TableCell>
+            <TableCell className="tableCell">longitude</TableCell>
+            <TableCell className="tableCell">UHI (C)</TableCell>
+            <TableCell className="tableCell">Place</TableCell>
+            <TableCell className="tableCell">Time</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {coor
-            ? coor.map((row) => (
-                <TableRow key={row.titik}>
-                  <TableCell className="tableCell">{row.titik}</TableCell>
+          {dbData
+            ? dbData.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell className="tableCell">{row.id}</TableCell>
                   <TableCell className="tableCell">
-                    <div className="cellWrapper">{row.x}</div>
+                    <div className="cellWrapper">{row.latitude}</div>
                   </TableCell>
-                  <TableCell className="tableCell">{row.y}</TableCell>
-                  <TableCell className="tableCell">{row.z}</TableCell>
+                  <TableCell className="tableCell">{row.longitude}</TableCell>
+                  <TableCell className="tableCell">{row.temp}</TableCell>
                   <TableCell className="tableCell">
-                    <span className={`status ${row.status}`}>{row.status}</span>
+                    <span className={`status ${row.status}`}>{row.place}</span>
                   </TableCell>
+                  <TableCell className="tableCell">{row.date}</TableCell>
+
                 </TableRow>
               ))
             : null}
