@@ -1,6 +1,6 @@
 import React from "react";
 import temp from "../../images/temp.png"
-import style from "./styles.css"
+// import style from "./styles.css"
 const PopUpImage = ({data}) => {
   return (
     <div className="popup-container">

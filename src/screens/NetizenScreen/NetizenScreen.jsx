@@ -17,7 +17,6 @@ import footerLine from "../../images/miniFooterLine.png";
 import constant from "../../constant/descriptions.json";
 import Tweet from "../../components/Tweet/Tweet";
 import PopUpImage from "../../components/popup";
-import { mockUserData } from "../../constant/mockUserData";
 import { MinimapControl } from "../../components/minimap/miniMap";
 import {
   query,
