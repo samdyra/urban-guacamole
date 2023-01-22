@@ -1,42 +1,60 @@
 .home-screen-container {
-  background-image: url("../../images/HomeBackgroundcolor-min.png");
-  background-color: #304163;
+  background: linear-gradient(
+    to right,
+    var(--tradeWind) 0%,
+    var(--tradeWind) 35vw,
+    #b4d9d7 35vw,
+    #b4d9d7 100%
+  );
   background-repeat: no-repeat;
   background-size: cover;
   /* border: 3px red solid; */
   height: calc(100vh - 58px);
-  padding: 0 15px;
 }
 
 /* .home-screen-container::-webkit-scrollbar {
   display: none;
 } */
+.home-screen-container-background {
+  position: absolute;
+
+  top: 0;
+  background-color: #d4e6e7b2;
+  width: 65%;
+  height: 100vh;
+}
 
 .logo-title-desc-container {
   display: flex;
   align-items: center;
-  justify-content: center;
   height: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  z-index: 1s;
 }
 
 .logo-title-desc-container img {
-  height: 400px;
-  width: 400px;
+  width: 90%;
+
   /* border: 3px red solid; */
 }
 
 .title-desc-container {
   /* border: 3px red solid; */
-  width: 800px;
-  padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  max-width: 35%;
+  padding-inline: 50px;
 }
 
 .title-container {
   font-family: montserrat;
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
-  line-height: 117px;
+  font-size: 70px;
   text-align: justify;
   /* border: 3px red solid; */
   color: #ffffff;
@@ -45,9 +63,57 @@
 .desc-container {
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 30px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
   text-align: justify;
-  color: #ffffff;
+  color: black;
+  padding-block: 30px;
+  padding-inline: 20px;
+  border-radius: 25px;
+  width: 100%;
+
+  background: var(--aquaSparkle);
+}
+
+.facts-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding-inline: 50px;
+  height: 100%;
+  width: 65%;
+}
+
+.facts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+.facts-title-container {
+  height: 50px;
+  width: 100%;
+  border-radius: 98px;
+  background: var(--flashWhite);
+}
+
+.facts-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  padding-inline: 30px;
+  color: var(--flashWhite);
+
+  background: var(--juniper);
+  border-radius: 98px;
+  width: max-content;
+  height: 100%;
 }
