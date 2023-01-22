@@ -27,6 +27,10 @@
   padding-bottom: 30px;
 }
 
+.featureTitle-container img {
+  max-width: 500px;
+}
+
 .feature-container {
   display: flex;
   /* border: 3px red solid; */
