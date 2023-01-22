@@ -1,5 +1,5 @@
 .nav-container {
-  background: #28385e;
+  background: #2f6569;
 }
 
 .nav-element {
@@ -8,7 +8,7 @@
   max-width: 1170px;
   align-items: center;
   margin: 0 auto;
-  padding: 8px 15px 8px 15px;
+  padding: 8px 5px 8px 0px;
 }
 
 .geoloka-logo-container img {
@@ -16,7 +16,7 @@
   height: 42px;
   width: 42px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .link-container a {
