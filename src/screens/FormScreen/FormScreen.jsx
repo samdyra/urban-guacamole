@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useReducer, useState } from "react";
 import "./FormScreen.css";
+import questionimage from "../../assets/images/questionimage.png";
 
 const initialState = {
   questions: [
@@ -28,6 +29,8 @@ function questionsReducer(state, action) {
       let newQuestions = state.questions.slice();
       newQuestions[action.questionIndex].answer = action.answer;
       return { ...state, questions: newQuestions };
+    case "reset_questions":
+      return { ...action.payload };
     default:
       return state;
   }
@@ -51,7 +54,10 @@ function FormPage() {
     });
   }
 
-  console.log(state);
+  const handlePublish = () => {
+    alert("Publishing...");
+    dispatch({ type: "reset_questions", payload: initialState });
+  };
 
   function handleImageChange(event) {
     setImages([...images, ...event.target.files]);
@@ -59,6 +65,7 @@ function FormPage() {
 
   return (
     <div className="form_wrapper">
+      <div className="title_container">Let's do QUIZ</div>
       <form>
         <div className="form_container">
           {state.questions.map((question, index) => (
@@ -102,6 +109,9 @@ function FormPage() {
           </div>
         </div>
       </form>
+      <div className="submit_button" onClick={handlePublish}>
+        Submit and check your score!
+      </div>
     </div>
   );
 }
