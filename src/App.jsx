@@ -9,6 +9,7 @@ import UHIMapScreen from "./screens/UHIMapScreen/UHIMapScreen";
 import NetizenScreen from "./screens/NetizenScreen/NetizenScreen";
 import ChartScreen from "./screens/Chart/Chart.jsx";
 import { LoginScreen, Form } from "./Store";
+import FormScreen from "./screens/FormScreen/FormScreen";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route exact path="/Form">
           <Form></Form>
+        </Route>
+        <Route exact path="/FormScreen">
+          <FormScreen></FormScreen>
         </Route>
       </Switch>
     </Router>

@@ -20,6 +20,7 @@ const NavBar = () => {
             <a href="/Chart">Statistics</a>
             <a href="/NetizenScreen">People Contribution</a>
             <a href="/Login">Login</a>
+            <a href="/FormScreen">Form</a>
           </div>
         </div>
       </div>
