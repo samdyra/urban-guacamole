@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useReducer, useState } from "react";
 import "./FormScreen.css";
-import questionimage from "../../assets/images/questionimage.png";
 
 const initialState = {
   questions: [

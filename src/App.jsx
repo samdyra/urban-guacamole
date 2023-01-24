@@ -10,6 +10,7 @@ import NetizenScreen from "./screens/NetizenScreen/NetizenScreen";
 import ChartScreen from "./screens/Chart/Chart.jsx";
 import { LoginScreen, Form } from "./Store";
 import FormScreen from "./screens/FormScreen/FormScreen";
+import DetailPage from "./screens/DetailPage/DetailPage";
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route exact path="/FormScreen">
           <FormScreen></FormScreen>
+        </Route>
+        <Route exact path="/DetailPage">
+          <DetailPage></DetailPage>
         </Route>
       </Switch>
     </Router>
