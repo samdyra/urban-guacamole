@@ -46,9 +46,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.section-container img {
+.urban2 {
   max-width: 800px;
   margin-top: 350px;
 }
@@ -85,4 +86,55 @@
   width: 350px;
   color: #000000;
   margin-left: 50px;
+}
+
+.bar {
+  position: absolute;
+  width: 151px;
+  height: 1926px;
+  left: 119px;
+  top: 869px;
+  z-index: -1;
+
+  background: #d4e6e7;
+}
+
+.section-container h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 90px;
+
+  color: #000000;
+}
+
+.spark {
+  position: absolute;
+  left: -5px;
+  top: 2181.56px;
+
+  transform: rotate(-19.56deg);
+}
+
+.pills {
+  position: absolute;
+  left: 128.4px;
+  top: 2354px;
+
+  transform: rotate(19deg);
+}
+
+.cane {
+  position: absolute;
+  left: -5px;
+  top: 2462.44px;
+
+  transform: rotate(-27.38deg);
+}
+
+.logo3 {
+  position: absolute;
+  right: 30px;
+  top: 10px;
 }
