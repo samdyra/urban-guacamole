@@ -7,6 +7,7 @@
   align-items: center;
 
   justify-content: center;
+  position: relative;
 }
 
 .top-section-container p {
@@ -16,7 +17,7 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  max-width: 1100px;
+  max-width: 900px;
 
   color: #000000;
 }
@@ -91,9 +92,9 @@
 .bar {
   position: absolute;
   width: 151px;
-  height: 1926px;
-  left: 119px;
-  top: 869px;
+  height: 270vh;
+  left: 75px;
+  top: 120vh;
   z-index: -1;
 
   background: #d4e6e7;
@@ -111,30 +112,97 @@
 
 .spark {
   position: absolute;
-  left: -5px;
-  top: 2181.56px;
-
-  transform: rotate(-19.56deg);
+  left: -40px;
+  top: 50px;
 }
 
 .pills {
   position: absolute;
-  left: 128.4px;
-  top: 2354px;
-
-  transform: rotate(19deg);
+  left: 97.4px;
+  top: 210px;
 }
 
 .cane {
   position: absolute;
-  left: -5px;
-  top: 2462.44px;
-
-  transform: rotate(-27.38deg);
+  left: -40px;
+  top: 320px;
 }
 
 .logo3 {
   position: absolute;
   right: 30px;
   top: 10px;
+}
+
+.impact_box {
+  width: 260px;
+  height: 170px;
+  padding-left: 20px;
+
+  background: #edf6f5;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.impact_box p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  width: 230px;
+
+  color: #000000;
+}
+.impact_box img {
+  height: 88px;
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.impact_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.section2-container {
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 300px;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section2-container h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 90px;
+
+  color: #000000;
+}
+
+.impact_box h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: flex-end;
+  width: 120px;
+
+  color: #000000;
 }
