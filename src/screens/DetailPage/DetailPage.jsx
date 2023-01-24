@@ -7,6 +7,11 @@ import spark from "../../images/spark.png";
 import cane from "../../images/cane.png";
 import pills from "../../images/pills.png";
 import logogeoloka3 from "../../images/logogeoloka3.png";
+import activities from "../../images/activities.png";
+import weather from "../../images/weather.png";
+import material from "../../images/material.png";
+import landscape from "../../images/landscape.png";
+import geometry from "../../images/geometry.png";
 
 const impact = [
   {
@@ -26,14 +31,72 @@ const impact = [
   },
 ];
 
+const cause = [
+  {
+    title: "Reduced Natural Landscapes",
+    desc: `Vegetation tend to cool the air, but dry surfaces in urban areas – such as roads and buildings – contribute to higher temperatures.`,
+    img: landscape,
+  },
+
+  {
+    title: "Urban Material Properties",
+    desc: "Conventional human-made materials such as pavements or roofing tend to reflect less solar energy, and absorb and emit more of the sun’s heat.",
+    img: material,
+  },
+  {
+    title: "Urban Geometries",
+    desc: "Surfaces and structures obstructed by neighboring buildings become large thermal masses that cannot release their heat readily.",
+    img: geometry,
+  },
+  {
+    title: "Weather and Geography",
+    desc: "Calm and clear weather conditions result in more severe island heat by maximizing the amount of solar energy reaching urban surfaces. ",
+    img: weather,
+  },
+  {
+    title: "Heat Generated from Human Activities",
+    desc: "Vehicles, air conditioning units, buildings, and industrial facilities are all sources of human-generated waste radiating heat into the urban environment.",
+    img: activities,
+  },
+];
+
 export default function DetailPage() {
   return (
     <div>
-      <div></div>
-
       <div className="top-section-container">
+        <div className="quiz_button">
+          <a href="/FormScreen">Let's do QUIZ!</a>
+        </div>
         <div className="bar"></div>
-        <div>What is Urban Heat Island?</div>
+        <div className="question1">
+          <div>
+            What is <br /> Urban Heat Island?
+          </div>
+          <div>
+            Urban Heat Island <br />
+            Maps
+          </div>
+        </div>
+
+        <div
+          className="question1"
+          style={{ marginBottom: "180px", gap: "590px" }}
+        >
+          <div style={{ background: "#D53939", color: "white" }}>
+            What caused <br /> Urban Heat Island?
+          </div>
+          <div style={{ background: "#D53939", color: "white" }}>
+            Statistical <br />
+            Analysis
+          </div>
+        </div>
+
+        <div className="question1" style={{ marginTop: "500px", gap: "590px" }}>
+          <div>
+            What are impacts of <br /> Urban Heat Island?
+          </div>
+          <div>People Contribution</div>
+        </div>
         <img src={urban} alt="urban" />
         <h1>GEOLOKA</h1>
         <p>{constant.homeDescription}</p>
@@ -57,7 +120,23 @@ export default function DetailPage() {
         <h1>
           What Caused <br></br>Urban Heat Island?
         </h1>
-        <div></div>
+        <div className="cause_container">
+          {cause.map((item, index) => {
+            return (
+              <div
+                className="impact_box"
+                id={index}
+                style={{ background: "none", boxShadow: "none" }}
+              >
+                <div className="flex">
+                  <img src={item.img} alt="" />
+                  <h1>{item.title}</h1>
+                </div>
+                <p>{item.desc}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div className="section2-container">
         <img src={pills} alt="" className="spark" />
