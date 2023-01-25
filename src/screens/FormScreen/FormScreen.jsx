@@ -5,19 +5,58 @@ import "./FormScreen.css";
 const initialState = {
   questions: [
     {
-      name: "What's your favorite color?",
-      options: ["Red", "Green", "Blue"],
+      name: "What does UHI stand for?",
+      options: [
+        "Urban Heat Island",
+        "Urban Heterogen Island",
+        "Urban Heavy Island",
+      ],
       answer: "",
+      correctAnswer: "Urban Heat Island",
     },
     {
-      name: "What's your favorite animal?",
-      options: ["Dog", "Cat", "Elephant"],
+      name: "What does UHI mean?",
+      options: [
+        "Urban area that is significantly warmer than its surrounding rural areas due to human activities",
+        "Urban area that is significantly cooler than its surrounding rural areas due to human activities",
+        "Urban area that is significantly warmer than its surrounding rural areas due to seasonal cycle",
+      ],
       answer: "",
+      correctAnswer:
+        "Urban area that is significantly warmer than its surrounding rural areas due to human activities",
     },
     {
-      name: "What's your favorite hobby?",
-      options: ["Reading", "Fishing", "Skiing"],
+      name: "What are the effects of UHI?",
+      options: [
+        "Affect human health",
+        "Heighten chronic exposure to air pollutants",
+        "Produce fresher air",
+        "Create heat waves",
+      ],
       answer: "",
+      correctAnswer: "Affect human health",
+    },
+    {
+      name: "Why is UHI stronger at night?",
+      options: [
+        "Because buildings, sidewalks, and parking lots block heat coming from the ground from rising into the cold night sky.",
+        "Because there is no sunlight to activate photosynthesis.",
+        "Because urban people produce more pollutant at night.",
+      ],
+      answer: "",
+      correctAnswer:
+        "Because buildings, sidewalks, and parking lots block heat coming from the ground from rising into the cold night sky.",
+    },
+    {
+      name: "What are the solutions to UHI effect?",
+      options: [
+        "Reduce vegetation",
+        "Create green roofs",
+        "Planting trees",
+        "Reduce carbon footprint",
+      ],
+      answer: "",
+      correctAnswer: "Create green roofs",
     },
   ],
 };
@@ -37,7 +76,6 @@ function questionsReducer(state, action) {
 
 function FormPage() {
   const [state, dispatch] = useReducer(questionsReducer, initialState);
-  const [images, setImages] = useState([]);
 
   function handleQuestionChange(event, questionIndex) {
     let newAnswer = event.target.value;
@@ -54,13 +92,17 @@ function FormPage() {
   }
 
   const handlePublish = () => {
-    alert("Publishing...");
+    alert("your Score is " + score);
     dispatch({ type: "reset_questions", payload: initialState });
   };
 
-  function handleImageChange(event) {
-    setImages([...images, ...event.target.files]);
-  }
+  const score = state.questions.reduce((acc, question) => {
+    if (question.answer === question.correctAnswer) {
+      return acc + 20;
+    } else {
+      return acc;
+    }
+  }, 0);
 
   return (
     <div className="form_wrapper">
@@ -93,19 +135,6 @@ function FormPage() {
               </React.Fragment>
             </div>
           ))}
-          <label>
-            Upload Images:
-            <input type="file" multiple onChange={handleImageChange} />
-          </label>
-          <div>
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={URL.createObjectURL(image)}
-                alt={`image-${index}`}
-              />
-            ))}
-          </div>
         </div>
       </form>
       <div className="submit_button" onClick={handlePublish}>
