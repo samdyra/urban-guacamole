@@ -62,17 +62,23 @@ const Stories = () => {
     </div>
   );
 
+  const ScreenWidth = window.innerWidth;
+  const isMobile = ScreenWidth <= 500;
+
   return (
     <div className="testContainer">
       <div className="title_container">People Contribution</div>
-      <div style={{ width: "800px", position: "relative" }}>
-        <div style={{ position: "absolute", right: "-153px", top: "-50px" }}>
-          {decoration}
+      {isMobile ? null : (
+        <div style={{ width: "800px", position: "relative" }}>
+          <div style={{ position: "absolute", right: "-153px", top: "-50px" }}>
+            {decoration}
+          </div>
+          <div style={{ position: "absolute", left: "-153px", top: "50px" }}>
+            {decoration}
+          </div>
         </div>
-        <div style={{ position: "absolute", left: "-153px", top: "50px" }}>
-          {decoration}
-        </div>
-      </div>
+      )}
+
       <div
         className="question_container"
         style={{ flexDirection: "column", marginBottom: "25px" }}
