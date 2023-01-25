@@ -104,6 +104,18 @@
   transform: scale(1.05);
 }
 
+@media screen and (max-width: 500px) {
+ .submit_button_disable {
+    width: 80vw;
+    font-size: 1rem;
+  }
+
+  .submit_button {
+    width: 80vw;
+    font-size: 1rem;
+  }
+}
+
 .decor {
   display: flex;
   flex-direction: column;
@@ -148,5 +160,8 @@
 
   .decor {
     display: none;
+  }
+
+  .form_container {
   }
 }

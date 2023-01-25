@@ -137,7 +137,6 @@
   width: 140px;
   height: 40px;
   /* or 21px */
-  border: none;
 
   color: #28385e;
 }
@@ -161,8 +160,12 @@
   width: 140px;
   height: 40px;
   border: none;
+
   color: #28385e;
 }
+
+
+
 
 .formbutton2:hover {
   cursor: pointer;
@@ -252,8 +255,15 @@
     width: 80vw;
   }
 
+  .image_preview img {
+    width: 100px;
+    height: auto;
+  }
+
   .image_upload_container {
     width: 80vw;
+    /* border: 3px solid red; */
+    /* margin-left: 80px; */
   }
 
   .image_upload_container h1 {
