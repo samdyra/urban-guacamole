@@ -64,7 +64,7 @@ const Stories = () => {
           center={[0, 0]}
           zoom={16}
           style={{
-            height: "320px",
+            height: "300px",
             width: "90%",
             position: "relative",
             zIndex: 0,

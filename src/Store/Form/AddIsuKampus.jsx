@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer, useRef } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db, auth } from "../../Config/firebase/index";
@@ -10,18 +10,31 @@ import moment from "moment";
 const initialState = {
   questions: [
     {
-      name: "What's your favorite color?",
-      options: ["Red", "Green", "Blue"],
+      name: "Are you from this city?",
+      options: [
+        "I live and do my main activities here",
+        "I only live here, but do my main activities somewhere else",
+        "I’m just a guest",
+      ],
       answer: "",
     },
     {
-      name: "What's your favorite animal?",
-      options: ["Dog", "Cat", "Elephant"],
+      name: "How is the temperature near you?",
+      options: [
+        "It's hot in here",
+        "The temperature is normal",
+        "I feel the cool air in here",
+      ],
       answer: "",
     },
     {
-      name: "What's your favorite hobby?",
-      options: ["Reading", "Fishing", "Skiing"],
+      name: "Is there any vegetation (e.g. trees, plants) around you?",
+      options: ["Yes, there is", "There isn’t any"],
+      answer: "",
+    },
+    {
+      name: "In your own view, is the amount of vegetation around you is sufficient?",
+      options: ["Yes", "No"],
       answer: "",
     },
   ],
@@ -42,7 +55,11 @@ function questionsReducer(state, action) {
 
 export default function AddKamerad({ latitude, longitude, acc }) {
   const [state, dispatch] = useReducer(questionsReducer, initialState);
+  const fileInputRef = useRef(null);
 
+  const handleDivClick = () => {
+    fileInputRef.current.click();
+  };
   function handleQuestionChange(event, questionIndex) {
     let newAnswer = event.target.value;
     if (state.questions[questionIndex].answer === newAnswer) {
@@ -73,7 +90,6 @@ export default function AddKamerad({ latitude, longitude, acc }) {
     });
   }, [latitude, longitude]);
   const date = moment().valueOf();
-  console.log(date);
   const [formData, setFormData] = useState({
     nama: "",
     image: "",
@@ -92,6 +108,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
 
   const handleImageChange = (e) => {
     setFormData({ ...formData, image: e.target.files[0] });
+    setImages([...images, e.target.files[0]]);
   };
 
   const handlePublish = () => {
@@ -194,31 +211,35 @@ export default function AddKamerad({ latitude, longitude, acc }) {
               </React.Fragment>
             </div>
           ))}
-          <label>
-            Upload Images:
-            <input type="file" multiple onChange={handleImageChange} />
-          </label>
-          <div>
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={URL.createObjectURL(image)}
-                alt={`image-${index}`}
-              />
-            ))}
-          </div>
         </div>
       </form>
       <div className="form_container">
-        <div className="question_container">
-          <label htmlFor="">Image (Optional)</label>
+        <div className="image_upload_container">
+          <label htmlFor="">
+            <h1>Capture Situation Around You</h1>
+            <p>(insert 2 (two) similar picture from Flir Camera)</p>
+          </label>
+          <div className="image_preview">
+            {images.map((image, index) => (
+              <img key={index} src={URL.createObjectURL(image)} />
+            ))}
+          </div>
           <input
             type="file"
             name="image"
             accept="image/*"
-            className="form-control"
+            style={{ display: "none" }}
             onChange={(e) => handleImageChange(e)}
+            id="imageupload"
+            ref={fileInputRef}
           />
+          <div
+            onClick={handleDivClick}
+            className="formbutton2"
+            style={{ alignSelf: "flex-start", fontSize: "20px" }}
+          >
+            Choose File
+          </div>
         </div>
         {progress === 0 ? null : (
           <div className="progress">
@@ -230,6 +251,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             </div>
           </div>
         )}
+
         <button className="submit_button" onClick={handlePublish}>
           Publish
         </button>
