@@ -10,6 +10,7 @@ import moment from "moment";
 const initialState = {
   questions: [
     {
+      id: "city",
       name: "Are you from this city?",
       options: [
         "I live and do my main activities here",
@@ -19,6 +20,7 @@ const initialState = {
       answer: "",
     },
     {
+      id: "temp",
       name: "How is the temperature near you?",
       options: [
         "It's hot in here",
@@ -28,11 +30,13 @@ const initialState = {
       answer: "",
     },
     {
+      id: "vegetation",
       name: "Is there any vegetation (e.g. trees, plants) around you?",
       options: ["Yes, there is", "There isn’t any"],
       answer: "",
     },
     {
+      id: "vegetationAmount",
       name: "In your own view, is the amount of vegetation around you is sufficient?",
       options: ["Yes", "No"],
       answer: "",
@@ -72,6 +76,10 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       questionIndex: questionIndex,
       answer: newAnswer,
     });
+    setFormData({
+      ...formData,
+      [state.questions[questionIndex].id]: newAnswer,
+    });
   }
   const [images, setImages] = useState([]);
 
@@ -91,20 +99,17 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   }, [latitude, longitude]);
   const date = moment().valueOf();
   const [formData, setFormData] = useState({
-    nama: "",
     image: "",
     date: "",
     latitude: lat,
     longitude: long,
     temp: "",
-    place: "",
+    vegetationAmount: "",
+    vegetation: "",
+    city: "",
   });
 
   const [progress, setProgress] = useState(0);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleImageChange = (e) => {
     setFormData({ ...formData, image: e.target.files[0] });
@@ -113,12 +118,13 @@ export default function AddKamerad({ latitude, longitude, acc }) {
 
   const handlePublish = () => {
     if (
-      !formData.nama ||
+      !formData.vegetation ||
       !formData.date ||
       !formData.temp ||
       !formData.latitude ||
       !formData.longitude ||
-      !formData.place
+      !formData.city ||
+      !formData.vegetationAmount
     ) {
       toast("Please fill all the fields");
       return;
@@ -144,20 +150,23 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       },
       () => {
         setFormData({
-          nama: "",
           image: "",
           date: "",
+          latitude: lat,
+          longitude: long,
           temp: "",
-          latitude: "",
-          longitude: "",
-          place: "",
+          vegetationAmount: "",
+          vegetation: "",
+          city: "",
         });
 
         getDownloadURL(uploadImage.snapshot.ref).then((url) => {
           const kameradRef = collection(db, "temperature");
           addDoc(kameradRef, {
-            nama: formData.nama,
-            place: formData.place,
+            city: formData.city,
+            vegetation: formData.vegetation,
+            vegetationAmount: formData.vegetationAmount,
+
             image: url,
             date: formData.date,
             datems: date,
