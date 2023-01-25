@@ -42,12 +42,15 @@ function App() {
         </Route>
         <Route exact path="/Form">
           <Form></Form>
+          <Footer></Footer>
         </Route>
         <Route exact path="/FormScreen">
           <FormScreen></FormScreen>
+          <Footer></Footer>
         </Route>
         <Route exact path="/DetailPage">
           <DetailPage></DetailPage>
+          <Footer></Footer>
         </Route>
       </Switch>
     </Router>
