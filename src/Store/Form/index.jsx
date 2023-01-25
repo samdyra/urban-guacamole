@@ -42,7 +42,7 @@ const Stories = () => {
 
   const successCallback = ({ coords }) => {
     const { latitude, longitude, accuracy } = coords;
-    console.log(coords)
+    console.log(coords);
     setLatitude(latitude);
     setLongitude(longitude);
     setAcc(accuracy);
@@ -54,33 +54,42 @@ const Stories = () => {
 
   return (
     <div className="testContainer">
-      <MapContainer
-        center={[0, 0]}
-        zoom={16}
-        style={{
-          height: "320px",
-          width: "320px",
-          position: "relative",
-          zIndex: 0,
-          boxShadow: "-2px 3px 5px 0 rgba(0,.9,0,.4)",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "20px",
-        }}
+      <div className="title_container">People Contribution</div>
+      <div
+        className="question_container"
+        style={{ flexDirection: "column", marginBottom: "25px" }}
       >
-        <Map latitude={latitude} longitude={longitude}></Map>
-        <Marker position={[latitude, longitude]}></Marker>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </MapContainer>
-      <button className="formbutton2" onClick={pressMap}>
-        Locate
-      </button>
+        <p>Select your area!</p>
+        <MapContainer
+          center={[0, 0]}
+          zoom={16}
+          style={{
+            height: "320px",
+            width: "90%",
+            position: "relative",
+            zIndex: 0,
+            boxShadow: "-2px 3px 5px 0 rgba(0,.9,0,.4)",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "20px",
+          }}
+        >
+          <Map latitude={latitude} longitude={longitude}></Map>
+          <Marker position={[latitude, longitude]}></Marker>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </MapContainer>
+        <button className="formbutton2" onClick={pressMap}>
+          Locate
+        </button>
+      </div>
       <div>
         <AddStory
-        latitude={latitude} longitude={longitude} acc={acc}
+          latitude={latitude}
+          longitude={longitude}
+          acc={acc}
         ></AddStory>
       </div>
     </div>

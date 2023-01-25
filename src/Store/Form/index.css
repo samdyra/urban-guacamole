@@ -1,15 +1,12 @@
 .testContainer {
-  display: flex;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  border: 3px solid rgb(112, 112, 112);
-  width: 380px;
+  align-items: center;
+  justify-content: center;
+
   margin-inline: auto;
   border-radius: 10px;
-  background-color: rgba(247, 247, 247, 0.304);
-  margin-bottom: 100px;
-  padding-inline: 20px;
 }
 
 .adminContainer {

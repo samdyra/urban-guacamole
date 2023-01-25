@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db, auth } from "../../Config/firebase/index";
@@ -7,7 +7,57 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
+const initialState = {
+  questions: [
+    {
+      name: "What's your favorite color?",
+      options: ["Red", "Green", "Blue"],
+      answer: "",
+    },
+    {
+      name: "What's your favorite animal?",
+      options: ["Dog", "Cat", "Elephant"],
+      answer: "",
+    },
+    {
+      name: "What's your favorite hobby?",
+      options: ["Reading", "Fishing", "Skiing"],
+      answer: "",
+    },
+  ],
+};
+
+function questionsReducer(state, action) {
+  switch (action.type) {
+    case "update_answer":
+      let newQuestions = state.questions.slice();
+      newQuestions[action.questionIndex].answer = action.answer;
+      return { ...state, questions: newQuestions };
+    case "reset_questions":
+      return { ...action.payload };
+    default:
+      return state;
+  }
+}
+
 export default function AddKamerad({ latitude, longitude, acc }) {
+  const [state, dispatch] = useReducer(questionsReducer, initialState);
+
+  function handleQuestionChange(event, questionIndex) {
+    let newAnswer = event.target.value;
+    if (state.questions[questionIndex].answer === newAnswer) {
+      newAnswer = "";
+    }
+    let newQuestions = state.questions.slice();
+    newQuestions[questionIndex].answer = newAnswer;
+    dispatch({
+      type: "update_answer",
+      questionIndex: questionIndex,
+      answer: newAnswer,
+    });
+  }
+  const [images, setImages] = useState([]);
+
   const [user] = useAuthState(auth);
   const [lat, setLat] = useState(latitude || 0);
   const [long, setLong] = useState(longitude || 0);
@@ -15,10 +65,15 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   useEffect(() => {
     setLong(longitude);
     setLat(latitude);
-    setFormData({ ...formData, latitude: latitude, longitude: longitude, date: moment().format("HH:mm MMMM DD YYYY") });
+    setFormData({
+      ...formData,
+      latitude: latitude,
+      longitude: longitude,
+      date: moment().format("HH:mm MMMM DD YYYY"),
+    });
   }, [latitude, longitude]);
-  const date = moment().valueOf()
-  console.log(date)
+  const date = moment().valueOf();
+  console.log(date);
   const [formData, setFormData] = useState({
     nama: "",
     image: "",
@@ -45,7 +100,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       !formData.date ||
       !formData.temp ||
       !formData.latitude ||
-      !formData.longitude || 
+      !formData.longitude ||
       !formData.place
     ) {
       toast("Please fill all the fields");
@@ -95,7 +150,10 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             longitude: long,
           })
             .then(() => {
-              toast("Data Successfully Added, \n Thankyou for your Contribution!", { type: "success" });
+              toast(
+                "Data Successfully Added, \n Thankyou for your Contribution!",
+                { type: "success" }
+              );
               setProgress(0);
             })
             .catch((err) => {
@@ -108,63 +166,51 @@ export default function AddKamerad({ latitude, longitude, acc }) {
 
   return (
     <div>
-      <div className="formadmincontainer">
-        <dic className="formtitle">Sample Temperature</dic>
-        <div className="formadmin">
-          <label htmlFor="">Name</label>
-          <textarea
-            name="nama"
-            className="form-control"
-            value={formData.nama}
-            onChange={(e) => handleChange(e)}
-          />
+      <form>
+        <div className="form_container">
+          {state.questions.map((question, index) => (
+            <div className="question_container">
+              <React.Fragment key={index}>
+                <label>
+                  <div style={{ marginBlock: "15px" }}>{question.name}</div>
+                  <div className="options_container">
+                    {question.options.map((option, idx) => (
+                      <React.Fragment key={idx}>
+                        <label>
+                          <input
+                            type="radio"
+                            value={option}
+                            onClick={(e) => handleQuestionChange(e, index)}
+                            checked={question.answer === option}
+                          />
+                          <span className="checkmark"></span>
+                          {option}
+                        </label>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </label>
+                <br />
+              </React.Fragment>
+            </div>
+          ))}
+          <label>
+            Upload Images:
+            <input type="file" multiple onChange={handleImageChange} />
+          </label>
+          <div>
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={URL.createObjectURL(image)}
+                alt={`image-${index}`}
+              />
+            ))}
+          </div>
         </div>
-        <div className="formadmin">
-          <label htmlFor="">Place Name</label>
-          <textarea
-            name="place"
-            className="form-control"
-            value={formData.place}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className="formadmin">
-          <label htmlFor="">Date</label>
-          <textarea
-            name="date"
-            className="form-control"
-            value={formData.date}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className="formadmin">
-          <label htmlFor="">Latitude</label>
-          <textarea
-            name="lat"
-            className="form-control"
-            value={lat}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className="formadmin">
-          <label htmlFor="">Longitude</label>
-          <textarea
-            name="long"
-            className="form-control"
-            value={long}
-            onChange={(e) => handleChange(e)}
-          ></textarea>
-        </div>
-        <div className="formadmin">
-          <label htmlFor="">Temperature (Celcius)</label>
-          <textarea
-            name="temp"
-            className="form-control"
-            value={formData.temp}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className="formadmin">
+      </form>
+      <div className="form_container">
+        <div className="question_container">
           <label htmlFor="">Image (Optional)</label>
           <input
             type="file"
@@ -184,7 +230,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             </div>
           </div>
         )}
-        <button className="formbutton" onClick={handlePublish}>
+        <button className="submit_button" onClick={handlePublish}>
           Publish
         </button>
       </div>
