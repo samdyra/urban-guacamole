@@ -14,7 +14,7 @@ const UseCompressImage = async (e, data, setData, setProgress, maxSize=0.2) => {
 
   try {
     await imageCompression(imageFile, options).then((result) => {
-      setData({ ...data, image: result })
+      setData([ ...data, result ])
     })
   }
 
