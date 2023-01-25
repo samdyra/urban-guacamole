@@ -1,13 +1,13 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState, useReducer, useRef } from "react";
-import { Timestamp, collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db, auth } from "../../Config/firebase/index";
+import { storage, db } from "../../Config/firebase/index";
 import { toast } from "react-toastify";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
 import moment from "moment";
 import "./index.css";
 import "../../screens/FormScreen/FormScreen.css";
+import UseCompressImage from "../../helpers/useCompressImage";
 
 const initialState = {
   questions: [
@@ -61,11 +61,103 @@ function questionsReducer(state, action) {
 
 export default function AddKamerad({ latitude, longitude, acc }) {
   const [state, dispatch] = useReducer(questionsReducer, initialState);
+  const kameradRef = collection(db, "temperature");
+  const [images, setImages] = useState([]);
+  const [lat, setLat] = useState(latitude || 0);
+  const [long, setLong] = useState(longitude || 0);
+  const [progressCompress, setProgressCompress] = useState(0);
+  const [ablePublish, setAblePublish] = useState(false);
+  const [imageAblePublish, setImageAblePublish] = useState(true);
+  const [progress, setProgress] = useState(0);
+  console.log(progress)
+  const [formData, setFormData] = useState({
+    date: "",
+    latitude: lat,
+    longitude: long,
+    temp: "",
+    vegetationAmount: "",
+    vegetation: "",
+    city: "",
+  });
+
+  console.log(formData);
+
   const fileInputRef = useRef(null);
 
   const handleDivClick = () => {
     fileInputRef.current.click();
   };
+
+  const uploadImageFunction = (el) => {
+    if (!el || el.length === 1 || el.length === 0) {
+      alert("Please upload 2 images");
+    }
+
+    function insertData(data, object) {
+      let counter = 1;
+      let key = "image";
+
+      while (Object.keys(object).includes(key)) {
+        key = `image${counter}`;
+        counter++;
+      }
+
+      object[key] = data;
+      return object;
+    }
+
+    el.map((image) => {
+      const storageRef = ref(storage, `/lokasitemperature/${image.name}`);
+      const uploadImage = uploadBytesResumable(storageRef, image);
+      uploadImage.on(
+        "state_changed",
+        (snapshot) => {
+          const progressPercent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progressPercent);
+        },
+        (err) => {
+          console.error(err);
+        },
+        () => {
+          getDownloadURL(uploadImage.snapshot.ref).then((url) => {
+            insertData(url, formData);
+            toast.success("Image uploaded successfully");
+            setImageAblePublish(false)
+          });
+        }
+      );
+    });
+  };
+
+  useEffect(() => {
+    setLong(longitude);
+    setLat(latitude);
+    setFormData({
+      ...formData,
+      latitude: latitude,
+      longitude: longitude,
+      date: moment().format("HH:mm MMMM DD YYYY"),
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [latitude, longitude]);
+
+  useEffect(() => {
+    if (
+      formData.vegetation &&
+      formData.date &&
+      formData.temp &&
+      formData.latitude &&
+      formData.longitude &&
+      formData.city &&
+      formData.vegetationAmount &&
+      !imageAblePublish
+    ) {
+      setAblePublish(true);
+    }
+  }, [formData, images, imageAblePublish]);
+
   function handleQuestionChange(event, questionIndex) {
     let newAnswer = event.target.value;
     if (state.questions[questionIndex].answer === newAnswer) {
@@ -83,112 +175,34 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       [state.questions[questionIndex].id]: newAnswer,
     });
   }
-  const [images, setImages] = useState([]);
-
-  const [user] = useAuthState(auth);
-  const [lat, setLat] = useState(latitude || 0);
-  const [long, setLong] = useState(longitude || 0);
-
-  useEffect(() => {
-    setLong(longitude);
-    setLat(latitude);
-    setFormData({
-      ...formData,
-      latitude: latitude,
-      longitude: longitude,
-      date: moment().format("HH:mm MMMM DD YYYY"),
-    });
-  }, [latitude, longitude]);
-  const date = moment().valueOf();
-  const [formData, setFormData] = useState({
-    image: "",
-    date: "",
-    latitude: lat,
-    longitude: long,
-    temp: "",
-    vegetationAmount: "",
-    vegetation: "",
-    city: "",
-  });
-
-  const [progress, setProgress] = useState(0);
 
   const handleImageChange = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
-    setImages([...images, e.target.files[0]]);
+    UseCompressImage(e, images, setImages, setProgressCompress);
   };
 
   const handlePublish = () => {
-    if (
-      !formData.vegetation ||
-      !formData.date ||
-      !formData.temp ||
-      !formData.latitude ||
-      !formData.longitude ||
-      !formData.city ||
-      !formData.vegetationAmount
-    ) {
-      toast("Please fill all the fields");
-      return;
-    }
-
-    const storageRef = ref(
-      storage,
-      `/lokasitemperature/${formData.image.name}`
-    );
-
-    const uploadImage = uploadBytesResumable(storageRef, formData.image);
-
-    uploadImage.on(
-      "state_changed",
-      (snapshot) => {
-        const progressPercent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progressPercent);
-      },
-      (err) => {
-        console.log(err);
-      },
-      () => {
-        setFormData({
-          image: "",
-          date: "",
-          latitude: lat,
-          longitude: long,
-          temp: "",
-          vegetationAmount: "",
-          vegetation: "",
-          city: "",
+    addDoc(kameradRef, {
+      city: formData.city,
+      vegetation: formData.vegetation,
+      vegetationAmount: formData.vegetationAmount,
+      image: formData.image,
+      image1: formData.image1,
+      date: formData.date,
+      datems: moment.now(),
+      temp: formData.temp,
+      accuracy: acc,
+      latitude: lat,
+      longitude: long,
+    })
+      .then(() => {
+        toast("Data Successfully Added, \n Thankyou for your Contribution!", {
+          type: "success",
         });
-
-        getDownloadURL(uploadImage.snapshot.ref).then((url) => {
-          const kameradRef = collection(db, "temperature");
-          addDoc(kameradRef, {
-            city: formData.city,
-            vegetation: formData.vegetation,
-            vegetationAmount: formData.vegetationAmount,
-            image: url,
-            date: formData.date,
-            datems: date,
-            temp: formData.temp,
-            accuracy: acc,
-            latitude: lat,
-            longitude: long,
-          })
-            .then(() => {
-              toast(
-                "Data Successfully Added, \n Thankyou for your Contribution!",
-                { type: "success" }
-              );
-              setProgress(0);
-            })
-            .catch((err) => {
-              toast("Error", { type: "error" });
-            });
-        });
-      }
-    );
+        setProgress(0);
+      })
+      .catch((err) => {
+        toast("Error", { type: "error" });
+      });
   };
 
   return (
@@ -231,7 +245,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
           </label>
           <div className="image_preview">
             {images.map((image, index) => (
-              <img key={index} src={URL.createObjectURL(image)} />
+              <img key={index} src={URL.createObjectURL(image)} alt="urban area"/>
             ))}
           </div>
           <input
@@ -243,15 +257,28 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             id="imageupload"
             ref={fileInputRef}
           />
-          <div
-            onClick={handleDivClick}
-            className="formbutton2"
-            style={{ alignSelf: "flex-start", fontSize: "20px" }}
-          >
-            Choose File
-          </div>
+          {!formData.image && !formData.image1 && (
+            <div style={{ display: "flex" }}>
+              <div
+                onClick={handleDivClick}
+                className="formbutton2"
+                style={{ alignSelf: "flex-start", fontSize: "20px" }}
+              >
+                Choose File
+              </div>
+              <div
+                onClick={() => uploadImageFunction(images)}
+                className={
+                  imageAblePublish ? "formbutton2" : "formbutton2-disable"
+                }
+                style={{ alignSelf: "flex-start", fontSize: "20px" }}
+              >
+                Upload
+              </div>
+            </div>
+          )}
         </div>
-        {progress === 0 ? null : (
+        {progress === 0 || progress === 100 ? null : (
           <div className="progress">
             <div
               className="progress-bar progress-bar-striped mt-2"
@@ -261,8 +288,25 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             </div>
           </div>
         )}
+        {progressCompress === 0 || progressCompress === 100 ? null : (
+          <div className="progress">
+            <div
+              className="barloadingcompress"
+              style={{ width: `${progressCompress}%` }}
+            >
+              {`compressing image ${progressCompress}%`}
+            </div>
+          </div>
+        )}
 
-        <button className="submit_button" onClick={handlePublish}>
+        <button
+          className={ablePublish ? "submit_button" : "submit_button_disable"}
+          onClick={
+            ablePublish
+              ? handlePublish
+              : () => alert("Please fill all the data!")
+          }
+        >
           Publish
         </button>
       </div>

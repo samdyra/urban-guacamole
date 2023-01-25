@@ -134,7 +134,7 @@ function FormPage() {
                       <React.Fragment key={idx}>
                         <label>
                           <input
-                            type="radio"
+                            type="checkbox"
                             value={option}
                             onClick={(e) => handleQuestionChange(e, index)}
                             checked={question.answer === option}
