@@ -4,6 +4,8 @@ import "./Footer.css";
 import constant from "../../constant/descriptions.json";
 
 const Footer = () => {
+  const ScreenWidth = window.innerWidth;
+  const isMobile = ScreenWidth <= 500;
   return (
     <div className="footer-container">
       <div className="footer-wrapper">
@@ -13,7 +15,11 @@ const Footer = () => {
           <a>CONTACT US</a>
         </div>
         <div className="line-image">
-          <img src={lineImage}></img>
+          {!isMobile ? (
+            <img src={lineImage}></img>
+          ) : (
+            <div className="linefooter"></div>
+          )}
         </div>
         <div className="copyright-container">
           <p>{constant.copyright}</p>

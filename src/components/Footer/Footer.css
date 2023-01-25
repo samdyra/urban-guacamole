@@ -49,3 +49,21 @@
 
   color: #e5e5e5;
 }
+
+.linefooter {
+  border: 1px solid #e5e5e5;
+  width: 80vw;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .our-container {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .our-container a {
+    padding-right: 0px;
+  }
+}
