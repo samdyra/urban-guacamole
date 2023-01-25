@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import "./index.css";
 import "../../screens/FormScreen/FormScreen.css";
+import UseCompressImage from "../../helpers/useCompressImage";
 
 const initialState = {
   questions: [
@@ -61,11 +62,14 @@ function questionsReducer(state, action) {
 
 export default function AddKamerad({ latitude, longitude, acc }) {
   const [state, dispatch] = useReducer(questionsReducer, initialState);
+  const [ progressCompress, setProgressCompress ] = useState(0)
+
   const fileInputRef = useRef(null);
 
   const handleDivClick = () => {
     fileInputRef.current.click();
   };
+
   function handleQuestionChange(event, questionIndex) {
     let newAnswer = event.target.value;
     if (state.questions[questionIndex].answer === newAnswer) {
@@ -99,7 +103,9 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       date: moment().format("HH:mm MMMM DD YYYY"),
     });
   }, [latitude, longitude]);
+
   const date = moment().valueOf();
+  
   const [formData, setFormData] = useState({
     image: "",
     date: "",
@@ -114,7 +120,8 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   const [progress, setProgress] = useState(0);
 
   const handleImageChange = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
+    // setFormData({ ...formData, image: e.target.files[0] });
+    UseCompressImage(e, formData, setFormData, setProgressCompress);
     setImages([...images, e.target.files[0]]);
   };
 
@@ -160,6 +167,11 @@ export default function AddKamerad({ latitude, longitude, acc }) {
           vegetationAmount: "",
           vegetation: "",
           city: "",
+        });
+
+        dispatch({
+          type: "reset_questions",
+          payload: initialState
         });
 
         getDownloadURL(uploadImage.snapshot.ref).then((url) => {
@@ -261,6 +273,16 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             </div>
           </div>
         )}
+        {progressCompress === 0 || progressCompress == 100 ? null : (
+            <div className="progress">
+              <div
+                className="barloadingcompress"
+                style={{ width: `${progressCompress}%` }}
+              >
+                {`compressing image ${progressCompress}%`}
+              </div>
+            </div>
+          )}
 
         <button className="submit_button" onClick={handlePublish}>
           Publish

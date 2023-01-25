@@ -238,3 +238,13 @@
     font-size: 20px;
   }
 }
+
+
+.barloadingcompress {
+  margin-top: 20px;
+  z-index: 9999;
+  background-color: aqua; 
+  border: 3px solid black ;
+  border-radius: 10px;
+  text-align: center;
+}

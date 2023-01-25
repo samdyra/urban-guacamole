@@ -14,13 +14,13 @@ const NavBar = () => {
         </div>
         <div className="link-container">
           <a href="/">Home</a>
+          {/* <a href="/DetailPage">Wiki</a> */}
           <a href="/UHIScreen">UHI Map</a>
           {/* <a href="/RTRWScreen">RDTR Zoning Map</a> */}
           <a href="/Chart">Statistics</a>
           <a href="/NetizenScreen">People Contribution</a>
-          <a href="/Login">Login</a>
-          <a href="/FormScreen">Form</a>
-          <a href="/DetailPage">DetailPage</a>
+          {/* <a href="/Login">Login</a> */}
+          <a href="/FormScreen">Quiz</a>
         </div>
       </div>
     </div>
