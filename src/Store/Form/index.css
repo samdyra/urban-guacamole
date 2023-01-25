@@ -224,3 +224,17 @@
 
   color: #28385e;
 }
+
+@media screen and (max-width: 500px) {
+  .image_preview {
+    width: 80vw;
+  }
+
+  .image_upload_container {
+    width: 80vw;
+  }
+
+  .image_upload_container h1 {
+    font-size: 20px;
+  }
+}

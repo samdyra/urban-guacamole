@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import "./index.css";
+import "../../screens/FormScreen/FormScreen.css";
 
 const initialState = {
   questions: [
@@ -166,7 +168,6 @@ export default function AddKamerad({ latitude, longitude, acc }) {
             city: formData.city,
             vegetation: formData.vegetation,
             vegetationAmount: formData.vegetationAmount,
-
             image: url,
             date: formData.date,
             datems: date,
@@ -191,7 +192,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   };
 
   return (
-    <div>
+    <div className="form_wrapper">
       <form>
         <div className="form_container">
           {state.questions.map((question, index) => (
@@ -224,7 +225,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       </form>
       <div className="form_container">
         <div className="image_upload_container">
-          <label htmlFor="">
+          <label>
             <h1>Capture Situation Around You</h1>
             <p>(insert 2 (two) similar picture from Flir Camera)</p>
           </label>
