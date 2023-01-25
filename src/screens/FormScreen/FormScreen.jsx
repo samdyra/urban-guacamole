@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useReducer, useState } from "react";
 import "./FormScreen.css";
+import questionimage from "../../images/questionimage.png";
 
 const initialState = {
   questions: [
@@ -104,11 +105,25 @@ function FormPage() {
     }
   }, 0);
 
+  const decoration = (
+    <div className="decor">
+      <img src={questionimage} alt="questionimage" />
+      <img src={questionimage} alt="questionimage" />
+      <img src={questionimage} alt="questionimage" />
+    </div>
+  );
+
   return (
     <div className="form_wrapper">
       <div className="title_container">Let's do QUIZ</div>
       <form>
         <div className="form_container">
+          <div style={{ position: "absolute", right: "-153px", top: "50px" }}>
+            {decoration}
+          </div>
+          <div style={{ position: "absolute", left: "-153px", top: "-50px" }}>
+            {decoration}
+          </div>
           {state.questions.map((question, index) => (
             <div className="question_container">
               <React.Fragment key={index}>

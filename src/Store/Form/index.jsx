@@ -8,6 +8,7 @@ import DeleteStory from "./DeleteIsuKampus";
 import AddStory from "./AddIsuKampus";
 import { MapContainer, TileLayer, GeoJSON, Marker } from "react-leaflet";
 import { useMap } from "react-leaflet";
+import questionimage from "../../images/questionimage.png";
 
 const Map = ({ latitude, longitude }) => {
   const map = useMap();
@@ -52,9 +53,26 @@ const Stories = () => {
     alert(error);
   };
 
+  const decoration = (
+    <div className="decor">
+      <img src={questionimage} alt="questionimage" />
+      <img src={questionimage} alt="questionimage" />
+      <img src={questionimage} alt="questionimage" />
+      <img src={questionimage} alt="questionimage" />
+    </div>
+  );
+
   return (
     <div className="testContainer">
       <div className="title_container">People Contribution</div>
+      <div style={{ width: "800px", position: "relative" }}>
+        <div style={{ position: "absolute", right: "-153px", top: "-50px" }}>
+          {decoration}
+        </div>
+        <div style={{ position: "absolute", left: "-153px", top: "50px" }}>
+          {decoration}
+        </div>
+      </div>
       <div
         className="question_container"
         style={{ flexDirection: "column", marginBottom: "25px" }}
