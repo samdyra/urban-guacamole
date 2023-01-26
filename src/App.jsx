@@ -17,11 +17,11 @@ function App() {
     <Router>
       <NavBar></NavBar>
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <HomeScreen></HomeScreen>
           <Features></Features>
           <Footer></Footer>
-        </Route>
+        </Route> */}
         <Route exact path="/Chart">
           <ChartScreen></ChartScreen>
         </Route>
@@ -48,7 +48,7 @@ function App() {
           <FormScreen></FormScreen>
           <Footer></Footer>
         </Route>
-        <Route exact path="/DetailPage">
+        <Route exact path="/">
           <DetailPage></DetailPage>
           <Footer></Footer>
         </Route>

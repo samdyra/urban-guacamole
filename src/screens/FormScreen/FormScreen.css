@@ -76,11 +76,44 @@
   border-radius: 17px;
 }
 
+.submit_button_disable {
+  width: 497px;
+  height: 61px;
+  margin: 0 auto;
+  margin-block: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 89%;
+
+  user-select: none;
+  cursor: pointer;
+  background: #dcdcdc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 17px;
+}
+
 .submit_button:hover {
   background: #ed9c06;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 500px) {
+ .submit_button_disable {
+    width: 80vw;
+    font-size: 1rem;
+  }
+
+  .submit_button {
+    width: 80vw;
+    font-size: 1rem;
+  }
 }
 
 .decor {
@@ -127,5 +160,8 @@
 
   .decor {
     display: none;
+  }
+
+  .form_container {
   }
 }
