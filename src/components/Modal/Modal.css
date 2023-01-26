@@ -18,6 +18,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 100;
 }
 
 .overlay {
@@ -34,6 +35,7 @@ body.active-modal {
   border-radius: 3px;
   max-width: 600px;
   min-width: 300px;
+  z-index: 101;
 }
 
 .close-modal {
@@ -41,4 +43,57 @@ body.active-modal {
   top: 10px;
   right: 10px;
   padding: 5px 7px;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+}
+
+.modal-content-formscreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 2;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  width: 60vw;
+  height: 80vh;
+  z-index: 101;
+  border-radius: 25px;
+  padding-left: 40px;
+  padding-top: 50px;
+
+  font-size: 0.9rem;
+
+  background: var(--aquaSparkle);
+  font-family: "Poppins";
+}
+
+.modal-content-formscreen h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 89%;
+  /* or 36px */
+
+  text-align: center;
+
+  color: #28385e;
+}
+
+.modal-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-button-container .formbutton2 {
+  font-size: 15px;
 }

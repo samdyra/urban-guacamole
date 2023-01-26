@@ -2,6 +2,7 @@
 import React, { useReducer, useState } from "react";
 import "./FormScreen.css";
 import questionimage from "../../images/questionimage.png";
+import Modal from "../../components/Modal/Modal";
 
 const initialState = {
   questions: [
@@ -62,6 +63,10 @@ const initialState = {
   ],
 };
 
+const correctAnswers = initialState.questions.map(
+  (question) => question.correctAnswer
+);
+
 function questionsReducer(state, action) {
   switch (action.type) {
     case "update_answer":
@@ -77,6 +82,7 @@ function questionsReducer(state, action) {
 
 function FormPage() {
   const [state, dispatch] = useReducer(questionsReducer, initialState);
+  console.log(correctAnswers);
 
   function handleQuestionChange(event, questionIndex) {
     let newAnswer = event.target.value;
@@ -91,11 +97,6 @@ function FormPage() {
       answer: newAnswer,
     });
   }
-
-  const handlePublish = () => {
-    alert("your Score is " + score);
-    dispatch({ type: "reset_questions", payload: initialState });
-  };
 
   const score = state.questions.reduce((acc, question) => {
     if (question.answer === question.correctAnswer) {
@@ -113,49 +114,78 @@ function FormPage() {
     </div>
   );
 
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  const resetForm = () => {
+    dispatch({ type: "reset_questions", payload: initialState });
+    toggleModal();
+  };
+
   return (
-    <div className="form_wrapper">
-      <div className="title_container">Let's do QUIZ</div>
-      <form>
-        <div className="form_container">
-          <div style={{ position: "absolute", right: "-153px", top: "50px" }}>
-            {decoration}
-          </div>
-          <div style={{ position: "absolute", left: "-153px", top: "-50px" }}>
-            {decoration}
-          </div>
-          {state.questions.map((question, index) => (
-            <div className="question_container">
-              <React.Fragment key={index}>
-                <label>
-                  <div style={{ marginBlock: "15px" }}>{question.name}</div>
-                  <div className="options_container">
-                    {question.options.map((option, idx) => (
-                      <React.Fragment key={idx}>
-                        <label>
-                          <input
-                            type="checkbox"
-                            value={option}
-                            onClick={(e) => handleQuestionChange(e, index)}
-                            checked={question.answer === option}
-                          />
-                          <span className="checkmark"></span>
-                          {option}
-                        </label>
-                      </React.Fragment>
-                    ))}
-                  </div>
-                </label>
-                <br />
-              </React.Fragment>
+    <>
+      {modal && (
+        <Modal
+          toggleModal={toggleModal}
+          modalName="formScreen"
+          score={score}
+          resetForm={resetForm}
+          correctAnswers={correctAnswers}
+        ></Modal>
+      )}
+
+      <div className="form_wrapper">
+        <div className="title_container">Let's do QUIZ</div>
+        <form>
+          <div className="form_container">
+            <div style={{ position: "absolute", right: "-153px", top: "50px" }}>
+              {decoration}
             </div>
-          ))}
+            <div style={{ position: "absolute", left: "-153px", top: "-50px" }}>
+              {decoration}
+            </div>
+            {state.questions.map((question, index) => (
+              <div className="question_container">
+                <React.Fragment key={index}>
+                  <label>
+                    <div style={{ marginBlock: "15px" }}>{question.name}</div>
+                    <div className="options_container">
+                      {question.options.map((option, idx) => (
+                        <React.Fragment key={idx}>
+                          <label>
+                            <input
+                              type="checkbox"
+                              value={option}
+                              onClick={(e) => handleQuestionChange(e, index)}
+                              checked={question.answer === option}
+                            />
+                            <span className="checkmark"></span>
+                            {option}
+                          </label>
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </label>
+                  <br />
+                </React.Fragment>
+              </div>
+            ))}
+          </div>
+        </form>
+        <div className="submit_button" onClick={toggleModal}>
+          Submit and check your score!
         </div>
-      </form>
-      <div className="submit_button" onClick={handlePublish}>
-        Submit and check your score!
       </div>
-    </div>
+    </>
   );
 }
 
