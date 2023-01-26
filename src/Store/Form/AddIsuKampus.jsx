@@ -69,8 +69,8 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   const [ablePublish, setAblePublish] = useState(false);
   const [imageAblePublish, setImageAblePublish] = useState(true);
   const [progress, setProgress] = useState(0);
-  console.log(progress)
   const [formData, setFormData] = useState({
+    name: "",
     date: "",
     latitude: lat,
     longitude: long,
@@ -78,9 +78,8 @@ export default function AddKamerad({ latitude, longitude, acc }) {
     vegetationAmount: "",
     vegetation: "",
     city: "",
+    celcius: "",
   });
-
-  console.log(formData);
 
   const fileInputRef = useRef(null);
 
@@ -90,7 +89,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
 
   const uploadImageFunction = (el) => {
     if (!el || el.length === 1 || el.length === 0) {
-      alert("Please upload 2 images");
+      return alert("Please upload 2 images");
     }
 
     function insertData(data, object) {
@@ -124,7 +123,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
           getDownloadURL(uploadImage.snapshot.ref).then((url) => {
             insertData(url, formData);
             toast.success("Image uploaded successfully");
-            setImageAblePublish(false)
+            setImageAblePublish(false);
           });
         }
       );
@@ -140,7 +139,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       longitude: longitude,
       date: moment().format("HH:mm MMMM DD YYYY"),
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [latitude, longitude]);
 
   useEffect(() => {
@@ -157,6 +156,11 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       setAblePublish(true);
     }
   }, [formData, images, imageAblePublish]);
+
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   function handleQuestionChange(event, questionIndex) {
     let newAnswer = event.target.value;
@@ -193,6 +197,8 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       accuracy: acc,
       latitude: lat,
       longitude: long,
+      name: formData.name,
+      celcius: formData.celcius,
     })
       .then(() => {
         toast("Data Successfully Added, \n Thankyou for your Contribution!", {
@@ -207,6 +213,16 @@ export default function AddKamerad({ latitude, longitude, acc }) {
 
   return (
     <div className="form_wrapper">
+      <div className="form_container" style={{marginBottom: 30}}>
+        <div className="question_container">
+          <div className="nametemp">
+          <label htmlFor="">Name:</label>
+          <textarea name="name" rows={1} value={formData.name} onChange={(e) => handleChange(e)} />
+          <label htmlFor="">Temperature in your area:</label>
+          <textarea name="celcius" rows={1} value={formData.celcius} onChange={(e) => handleChange(e)} />
+          </div>
+        </div>
+      </div>
       <form>
         <div className="form_container">
           {state.questions.map((question, index) => (
@@ -245,7 +261,11 @@ export default function AddKamerad({ latitude, longitude, acc }) {
           </label>
           <div className="image_preview">
             {images.map((image, index) => (
-              <img key={index} src={URL.createObjectURL(image)} alt="urban area"/>
+              <img
+                key={index}
+                src={URL.createObjectURL(image)}
+                alt="urban area"
+              />
             ))}
           </div>
           <input

@@ -6,7 +6,7 @@ import constant from "../../constant/descriptions.json";
 import spark from "../../images/spark.png";
 import cane from "../../images/cane.png";
 import pills from "../../images/pills.png";
-import logogeoloka3 from "../../images/logogeoloka3.png";
+import logogeoloka3 from "../../images/LogoGeoloka3.png";
 import activities from "../../images/activities.png";
 import weather from "../../images/weather.png";
 import material from "../../images/material.png";
