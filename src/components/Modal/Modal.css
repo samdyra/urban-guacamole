@@ -92,8 +92,85 @@ body.active-modal {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  gap: 20px;
 }
 
 .modal-button-container .formbutton2 {
   font-size: 15px;
+  width: 200px;
+  margin-right: 0;
+}
+
+.modal-content-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 2;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  width: fit-content;
+  height: fit-content;
+  z-index: 101;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 40px;
+  padding-block: 60px;
+
+  font-size: 0.9rem;
+
+  background: var(--aquaSparkle);
+  font-family: "Poppins";
+}
+
+.modal-content-form h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 130%;
+  /* or 36px */
+
+  text-align: center;
+
+  color: #28385e;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-button-container {
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  .modal-content-formscreen h1 {
+    font-size: 20px;
+  }
+  .modal-content-formscreen h3 {
+    font-size: 14px;
+  }
+  .modal-content-formscreen {
+    width: 90vw;
+  }
+
+  .modal-content-formscreen {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .modal-button-container {
+    margin-top: 0px;
+    gap: 0px;
+  }
+  .modal-content-formscreen h3 {
+    font-size: 12px;
+  }
 }

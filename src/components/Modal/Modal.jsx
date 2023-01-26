@@ -20,15 +20,15 @@ export default function Modal({
             <h1>{score}</h1>
 
             <h1>The Correct Answer is :</h1>
+
             {correctAnswers.map((answer, index) => {
               return (
-                <div className="correct-answers">
-                  <h3>
-                    {index + 1}. {answer}
-                  </h3>
-                </div>
+                <h3>
+                  {index + 1}. {answer}
+                </h3>
               );
             })}
+
             <div className="modal-button-container">
               <div className="formbutton2">
                 <a href="/">Back to Home</a>
@@ -46,9 +46,18 @@ export default function Modal({
       ) : modalName === "form" ? (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
-            <h2>{title}</h2>
-            <p>{desc}</p>
+          <div className="modal-content-form">
+            <h1>Thank you for your contribution!!!</h1>
+            <div className="modal-button-container">
+              <div className="modal-button-container">
+                <div className="formbutton2">
+                  <a href="/NetizenScreen">See Your Contribution</a>
+                </div>
+                <div className="formbutton2" onClick={resetForm}>
+                  Fill Another Data
+                </div>
+              </div>
+            </div>
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
             </button>

@@ -8,6 +8,7 @@ import moment from "moment";
 import "./index.css";
 import "../../screens/FormScreen/FormScreen.css";
 import UseCompressImage from "../../helpers/useCompressImage";
+import Modal from "../../components/Modal/Modal";
 
 const initialState = {
   questions: [
@@ -157,7 +158,6 @@ export default function AddKamerad({ latitude, longitude, acc }) {
     }
   }, [formData, images, imageAblePublish]);
 
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -211,15 +211,43 @@ export default function AddKamerad({ latitude, longitude, acc }) {
       });
   };
 
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  const submitForm = () => {
+    toggleModal();
+    // handlePublish();
+  };
+
   return (
     <div className="form_wrapper">
-      <div className="form_container" style={{marginBottom: 30}}>
+      {modal && <Modal toggleModal={toggleModal} modalName="form"></Modal>}
+      <div className="form_container" style={{ marginBottom: 30 }}>
         <div className="question_container">
           <div className="nametemp">
-          <label htmlFor="">Name:</label>
-          <textarea name="name" rows={1} value={formData.name} onChange={(e) => handleChange(e)} />
-          <label htmlFor="">Temperature in your area:</label>
-          <textarea name="celcius" rows={1} value={formData.celcius} onChange={(e) => handleChange(e)} />
+            <label htmlFor="">Name:</label>
+            <textarea
+              name="name"
+              rows={1}
+              value={formData.name}
+              onChange={(e) => handleChange(e)}
+            />
+            <label htmlFor="">Temperature in your area:</label>
+            <textarea
+              name="celcius"
+              rows={1}
+              value={formData.celcius}
+              onChange={(e) => handleChange(e)}
+            />
           </div>
         </div>
       </div>
@@ -321,11 +349,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
 
         <button
           className={ablePublish ? "submit_button" : "submit_button_disable"}
-          onClick={
-            ablePublish
-              ? handlePublish
-              : () => alert("Please fill all the data!")
-          }
+          onClick={submitForm}
         >
           Publish
         </button>
@@ -333,3 +357,7 @@ export default function AddKamerad({ latitude, longitude, acc }) {
     </div>
   );
 }
+
+// onClick={
+//             ablePublish ? submitForm : () => alert("Please fill all the data!")
+//           }
