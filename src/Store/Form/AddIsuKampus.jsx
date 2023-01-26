@@ -224,8 +224,9 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   }
 
   const submitForm = () => {
+    handlePublish();
+
     toggleModal();
-    // handlePublish();
   };
 
   return (

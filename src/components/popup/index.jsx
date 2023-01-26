@@ -1,19 +1,40 @@
 import React from "react";
-import temp from "../../images/temp.png"
-// import style from "./styles.css"
-const PopUpImage = ({data}) => {
+import temp from "../../images/temp.png";
+import style from "./styles.css";
+import ReactBeforeSliderComponent from "react-before-after-slider-component";
+import "react-before-after-slider-component/dist/build.css";
+import logoGeoloka from "../../images/logoGeoloka3.png";
+
+const PopUpImage = ({ data }) => {
+  const FIRST_IMAGE = {
+    imageUrl: data?.image,
+  };
+  const SECOND_IMAGE = {
+    imageUrl: data?.image1,
+  };
   return (
     <div className="popup-container">
-      <img src={data.image}></img>
+      {/* <img src={data.image}></img> */}
+      <ReactBeforeSliderComponent
+        firstImage={FIRST_IMAGE}
+        secondImage={SECOND_IMAGE}
+        delimiterIconStyles={{
+          width: "45px",
+          height: "45px",
+          backgroundImage: logoGeoloka,
+        }}
+      />
       <div className="temp-container">
-        <div className="temp-name">{data.nama}</div>
-        <div className="temp-place">{data.place}</div>
-        <div className="temp-date">{data.time}</div>
-        <div className="temp-lat">{data.latitude}</div>
-        <div className="temp-long">{data.longitude}</div>
+        <div className="temp-name">Name: {data.name}</div>
+        <div className="temp-place">Condition: {data.temp}</div>
+        <div className="temp-date">
+          Enough vegetation on your area?: {data.vegetation}
+        </div>
+        <div className="temp-date">Reported on {data.date}</div>
         <div className="temp-temp-container">
-            {/* <img src={temp}></img> */}
-            <div className="temp-value">{`${data.temp} C°`}</div>
+          <div className="temp-value">
+            Estimated Temperature on the area is {`${data.celcius} C°`}
+          </div>
         </div>
       </div>
     </div>

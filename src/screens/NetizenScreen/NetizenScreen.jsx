@@ -25,13 +25,13 @@ import {
   limit,
   orderBy,
 } from "firebase/firestore";
-import { auth, db } from "../../Config/firebase/index";
+import { db } from "../../Config/firebase/index";
 const NetizenScreen = () => {
   const [story, setStory] = useState([]);
 
   useEffect(() => {
     const storyRef = collection(db, "temperature");
-    const q = query(storyRef, orderBy("datems"));
+    const q = query(storyRef, orderBy("datems"), limit(10));
     onSnapshot(q, (snapshot) => {
       const story = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -139,7 +139,7 @@ const NetizenScreen = () => {
                     fillColor={"red"}
                     weight={0}
                   >
-                    <Popup>
+                    <Popup minWidth={400} maxWidth={400}>
                       <PopUpImage data={data}></PopUpImage>
                     </Popup>
                   </CircleMarker>

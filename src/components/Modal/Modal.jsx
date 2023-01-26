@@ -29,12 +29,12 @@ export default function Modal({
               );
             })}
 
-            <div className="modal-button-container">
+            <div className="modal-button-container" style={{ gap: 20 }}>
               <div className="formbutton2">
                 <a href="/">Back to Home</a>
               </div>
-              <div className="formbutton2" onClick={resetForm}>
-                Try Again
+              <div className="formbutton2">
+                <a href="/FormScreen">Try Again</a>
               </div>
             </div>
 
@@ -49,12 +49,12 @@ export default function Modal({
           <div className="modal-content-form">
             <h1>Thank you for your contribution!!!</h1>
             <div className="modal-button-container">
-              <div className="modal-button-container">
+              <div className="modal-button-container" style={{ gap: 20 }}>
                 <div className="formbutton2">
                   <a href="/NetizenScreen">See Your Contribution</a>
                 </div>
                 <div className="formbutton2" onClick={resetForm}>
-                  Fill Another Data
+                  <a href="/Form">Fill Another Data</a>
                 </div>
               </div>
             </div>
