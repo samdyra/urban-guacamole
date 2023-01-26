@@ -120,7 +120,7 @@ const NetizenScreen = () => {
 
       <div className="netizen-map-container">
         <MapContainer
-          center={[-8.7893678, 115.1792761]}
+          center={[-6.902612, 107.639347]}
           zoom={13}
           style={{
             height: "100%",
