@@ -102,8 +102,8 @@ export default function DetailPage() {
         <p>{constant.homeDescription}</p>
       </div>
       <div className="section-container">
-        <img src={logogeoloka3} alt="" className="logo3" />
-        <img src={urban2} alt="" className="urban2" />
+        <img src={logogeoloka3} alt="" className="logo3" id="logo3" />
+        <img src={urban2} alt="" className="urban2" id="urban2" />
         <div className="desc-text-container">
           <div className="urban2-title">What is Urban Heat Island?</div>
           <p>

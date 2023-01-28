@@ -1,38 +1,42 @@
 .popup-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .temp-temp-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .popup-container {
-    width: 200px;
-    height: 150px;
-    font-family: poppins;
+  font-family: poppins;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .temp-temp-container img {
-   
 }
 
 .popup-container img {
-    height: 140px;
-    width: 80px;
-    border-radius: 10px;
-    object-fit: cover;
+  height: 250px;
+  width: 370px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .temp-container {
-    /* display: flex; */
-    width: 100px;
+  /* display: flex; */
+  margin-top: 20px;
+  width: 100%;
+  background-color: rgba(212, 212, 212, 0.374);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .temp-value {
-    color: red;
-    font-size: 20px;
-    margin-top: 20px;
+  color: red;
+  font-size: 15px;
 }
