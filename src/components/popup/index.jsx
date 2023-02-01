@@ -3,7 +3,7 @@ import temp from "../../images/temp.png";
 import style from "./styles.css";
 import ReactBeforeSliderComponent from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
-import logoGeoloka from "../../images/logoGeoloka3.png";
+import logoGeoloka from "../../images/LogoGeoloka3.png";
 
 const PopUpImage = ({ data }) => {
   const FIRST_IMAGE = {
