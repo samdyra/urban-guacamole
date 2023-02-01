@@ -19,10 +19,11 @@ const PopUpImage = ({ data }) => {
         firstImage={FIRST_IMAGE}
         secondImage={SECOND_IMAGE}
         delimiterIconStyles={{
-          width: "45px",
-          height: "45px",
+          width: 35,
+          height: 35,
           backgroundImage: logoGeoloka,
         }}
+        className="slider-before-after"
       />
       <div className="temp-container">
         <div className="temp-name">Name: {data.name}</div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import geolokaLogo from "../../images/GeolokaLogo.png";
+// import geolokaLogo from "../../images/GeolokaLogo.png";
+import geolokaLogo from "../../images/LogoGeoloka3.png"
 import "./NavBarStyle.css";
 import { useLocation } from "react-router-dom";
 const NavBar = () => {
@@ -30,7 +31,9 @@ const NavBar = () => {
     <div className="nav-container">
       <div className="nav-element">
         <div className="geoloka-logo-container">
+          <a href="/">
           <img src={geolokaLogo} className="geoloka-logo"></img>
+          </a>
         </div>
         {!isMobile ? (
           <div className="link-container">
@@ -39,7 +42,7 @@ const NavBar = () => {
             {/* <a href="/RTRWScreen">RDTR Zoning Map</a> */}
             <a href="/Chart">Statistics</a>
             <a href="/NetizenScreen">People Contribution</a>
-            <a href="/Login">Login</a>
+            {/* <a href="/Login">Login</a> */}
             <a href="/FormScreen">Form</a>
             {/* <a href="/DetailPage">DetailPage</a> */}
           </div>

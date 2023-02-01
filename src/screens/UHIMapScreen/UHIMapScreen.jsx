@@ -7,13 +7,14 @@ import impsur from "../../images/ImperSurface.png";
 import nightlight from "../../images/NightLight.png";
 import NDVI from "../../images/NDVI.png";
 import antro from "../../images/AntroHeat.png";
-import geolokaLogo from "../../images/GeolokaLogo.png";
+import geolokaLogo from "../../images/LogoGeoloka3.png";
 import facebook from "../../images/facebook.png";
 import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
 import data from "../../Shapefiles/cirebonDatabase.json";
+import data2021 from "../../Shapefiles/cirebon2021.json"
 import Modal from "../../components/Modal/Modal";
 import paramsDesc from "../../constant/paramsDesc.json";
 import { MinimapControl } from "../../components/minimap/miniMap";
@@ -114,7 +115,7 @@ const UHIMapScreen = () => {
 
   const style = (feature) => {
     return {
-      fillColor: getColor(feature.properties.UHI),
+      fillColor: getColor(feature.properties.LST),
       weight: 0.8,
       opacity: 1,
       border: "solid",
@@ -147,7 +148,7 @@ const UHIMapScreen = () => {
   //geojson logic
 
   const onEachPolygons = (feature, layer) => {
-    const uhiValue = feature.properties.UHI;
+    const uhiValue = feature.properties.LST;
     const nightLightValue = feature.properties.NL;
     const ndbiValue = feature.properties.NDBI;
     const ndviValue = feature.properties.NDVI;
@@ -367,7 +368,7 @@ const UHIMapScreen = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <GeoJSON
-            data={data}
+            data={data2021}
             onEachFeature={onEachPolygons}
             style={style}
           ></GeoJSON>

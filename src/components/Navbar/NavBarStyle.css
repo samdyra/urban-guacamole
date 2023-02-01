@@ -13,8 +13,8 @@
 
 .geoloka-logo-container img {
   display: flex;
-  height: 42px;
-  width: 42px;
+  height: 52px;
+  /* width: 42px; */
   align-items: center;
   justify-content: flex-start;
 }

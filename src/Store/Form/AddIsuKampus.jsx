@@ -231,7 +231,16 @@ export default function AddKamerad({ latitude, longitude, acc }) {
   return (
     <div className="form_wrapper">
       {modal && <Modal toggleModal={toggleModal} modalName="form"></Modal>}
-
+      <div className="form_container" style={{marginBottom: 30}}>
+        <div className="question_container">
+          <div className="nametemp">
+          <label htmlFor="">Name:</label>
+          <textarea name="name" rows={1} value={formData.name} onChange={(e) => handleChange(e)} />
+          <label htmlFor="">Temperature in your area:</label>
+          <textarea name="celcius" rows={1} value={formData.celcius} onChange={(e) => handleChange(e)} />
+          </div>
+        </div>
+      </div>
       <form>
         <div className="form_container">
           {state.questions.map((question, index) => (

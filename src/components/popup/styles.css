@@ -40,3 +40,7 @@
   color: red;
   font-size: 15px;
 }
+
+.slider-before-after {
+  object-fit: cover;
+}

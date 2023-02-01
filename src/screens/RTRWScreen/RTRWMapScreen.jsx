@@ -5,7 +5,7 @@ import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import constant from "../../constant/descriptions.json";
-import geolokaLogo from "../../images/GeolokaLogo.png";
+import geolokaLogo from "../../images/LogoGeoloka3.png";
 import footerLine from "../../images/miniFooterLine.png";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { MinimapControl } from "../../components/minimap/miniMap";

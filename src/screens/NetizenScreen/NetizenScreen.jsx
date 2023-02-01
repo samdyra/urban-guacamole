@@ -8,7 +8,7 @@ import {
   CircleMarker,
 } from "react-leaflet";
 import "./NetizenScreenStyle.css";
-import geolokaLogo from "../../images/GeolokaLogo.png";
+import geolokaLogo from "../../images/LogoGeoloka3.png";
 import facebook from "../../images/facebook.png";
 import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
@@ -47,7 +47,7 @@ const NetizenScreen = () => {
           {/* Netizen Title */}
           <div className="netizen-title">
             <h1>PEOPLE CONTRIBUTIONS</h1>
-            <h2>Bali City</h2>
+            <h2>Bangkok Thailand</h2>
             <p>Reports on selected area:</p>
             <h3>{story.length} Reports found!</h3>
           </div>
@@ -120,7 +120,7 @@ const NetizenScreen = () => {
 
       <div className="netizen-map-container">
         <MapContainer
-          center={[-6.902612, 107.639347]}
+          center={[13.6581643, 100.6098188]}
           zoom={13}
           style={{
             height: "100%",
