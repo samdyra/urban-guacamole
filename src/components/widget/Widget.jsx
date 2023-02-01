@@ -12,7 +12,7 @@ const Widget = ({ type, actualData }) => {
       data = {
         title: "MEAN UHI (2020)",
         isMoney: false,
-        progress: 28.74,
+        progress: 33.74,
       };
       break;
     case "order":

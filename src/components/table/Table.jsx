@@ -52,10 +52,11 @@ const List = ({ data, dbData }) => {
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">id</TableCell>
+            <TableCell className="tableCell">Reporter</TableCell>
             <TableCell className="tableCell">latitude</TableCell>
             <TableCell className="tableCell">longitude</TableCell>
             <TableCell className="tableCell">UHI (C)</TableCell>
-            <TableCell className="tableCell">Place</TableCell>
+            {/* <TableCell className="tableCell">Place</TableCell> */}
             <TableCell className="tableCell">Time</TableCell>
           </TableRow>
         </TableHead>
@@ -64,14 +65,15 @@ const List = ({ data, dbData }) => {
             ? dbData.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell className="tableCell">{row.id}</TableCell>
+                  <TableCell className="tableCell">{row.name}</TableCell>
                   <TableCell className="tableCell">
                     <div className="cellWrapper">{row.latitude}</div>
                   </TableCell>
                   <TableCell className="tableCell">{row.longitude}</TableCell>
-                  <TableCell className="tableCell">{row.temp}</TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell">{row.celcius}</TableCell>
+               {/* <TableCell className="tableCell">
                     <span className={`status ${row.status}`}>{row.place}</span>
-                  </TableCell>
+                  </TableCell>    */}
                   <TableCell className="tableCell">{row.date}</TableCell>
 
                 </TableRow>

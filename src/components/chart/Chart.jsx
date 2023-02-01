@@ -13,15 +13,15 @@ const Chart = ({ aspect, title, actualData }) => {
   const data = [
     {
       name: "2010",
-      UHI: 27.21,
+      UHI: 32.21,
     },
     {
       name: "2015",
-      UHI: 28.11,
+      UHI: 33.11,
     },
     {
       name: "2020",
-      UHI: 28.74,
+      UHI: 34.74,
     }
   ];
 

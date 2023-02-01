@@ -13,7 +13,6 @@ import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
-import data from "../../Shapefiles/cirebonDatabase.json";
 import data2021 from "../../Shapefiles/cirebon2021.json"
 import Modal from "../../components/Modal/Modal";
 import paramsDesc from "../../constant/paramsDesc.json";
@@ -100,15 +99,15 @@ const UHIMapScreen = () => {
   // Styling functions
 
   const getColor = (d) => {
-    return d == 20.16
+    return d == 32.50
       ? "rgb(0, 169, 11)"
-      : d >= 20.16 && d <= 23.26
+      : d >= 32.50 && d <= 33.00
       ? "rgb(4, 215, 71)"
-      : d >= 23.26 && d <= 25.63
+      : d >= 33.00 && d <= 33.50
       ? "rgb(255, 217, 0)"
-      : d >= 25.63 && d <= 26.91
+      : d >= 33.50 && d <= 34.00
       ? "rgb(255, 171, 3)"
-      : d >= 26.91 && d <= 29.3
+      : d >= 34.00 && d <= 35.0
       ? "rgb(226, 1, 1)"
       : "";
   };
@@ -153,8 +152,8 @@ const UHIMapScreen = () => {
     const ndbiValue = feature.properties.NDBI;
     const ndviValue = feature.properties.NDVI;
     const kelurahanValue = feature.properties.Kelurahan;
-    const kecamatanValue = feature.properties.Kecamatan;
-    const areaValue = feature.properties.Luas;
+    const kecamatanValue = feature.properties.WADMKC;
+    const areaValue = feature.properties.NAMOBJ;
     function paramsFunc() {
       setUhiValue(uhiValue);
       setNightLightValue(nightLightValue);
@@ -178,13 +177,13 @@ const UHIMapScreen = () => {
   // init function logic
   const initFunction = () => {
     toggleModal();
-    setUhiValue("24.96");
+    setUhiValue("34.96");
     setNightLightValue("13.517");
     setNdbiValue("24.974");
     setNdviValue("0.234");
     setKelurahanValue("Harjamukti");
-    setKecamatanValue("Harjamukti");
-    setAreaValue("245");
+    setKecamatanValue("Kejaksan");
+    setAreaValue("Kebonbaru");
   };
 
   useEffect(() => {
@@ -285,13 +284,13 @@ const UHIMapScreen = () => {
                 <p>Kelurahan :</p>
                 <p>Kecamatan :</p>
                 <p>City :</p>
-                <p>Area :</p>
+                <p>Desa :</p>
               </div>
               <div className="UHIKeterangan-content">
                 <p>{kelurahanValue}</p>
                 <p>{kecamatanValue}</p>
                 <p>Kota Cirebon</p>
-                <p>{areaValue} Ha</p>
+                <p>{areaValue}</p>
               </div>
             </div>
           </div>
@@ -304,11 +303,11 @@ const UHIMapScreen = () => {
             <div className="UHI-chloropeth-legend">
               <div className="UHI-chloropeth-content">
                 <div className="chloropeth-container">
-                  <p>UHI Value : 20.16 C</p>
-                  <p>UHI Value : 20.16 C - 23.26 C</p>
-                  <p>UHI Value : 23.36 C - 25.63 C</p>
-                  <p>UHI Value : 25.63 C - 26.91 C </p>
-                  <p>UHI Value : 26.91 C - 29.3 C</p>
+                  <p>UHI Value : 32.5 C</p>
+                  <p>UHI Value : 32.50 C - 33.00 C</p>
+                  <p>UHI Value : 33.00 C - 33.50 C</p>
+                  <p>UHI Value : 33.50 C - 34.00 C </p>
+                  <p>UHI Value : 34.00 C - 35.00 C</p>
                 </div>
                 <div className="chloro-symbols">
                   <div className="chlo1"></div>
