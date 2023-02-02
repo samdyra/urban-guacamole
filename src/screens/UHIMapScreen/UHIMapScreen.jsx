@@ -58,31 +58,43 @@ const UHIMapScreen = () => {
         : 3;
 
     let uhiDesc = "UHI Level in this area is not significant"
+    let measurement = []
     if (uhiLevel != 0) {
       if (uhiLevel == 1 && ndbiIndexHigh) {
         uhiDesc = "Green roofs"
+        measurement = ["Use of renewable energy sources (PV panels)", "Building facades with light colors", "Reflective materials"]
       }
       if (uhiLevel == 2 && ndbiIndexHigh) {
         uhiDesc = "Green roofs, cool roofs"
+        measurement = ["Green building walls", "Albedo modification on building walls", "using green curtains"]
       }
       if (uhiLevel == 3 && ndbiIndexHigh) {
         uhiDesc = "Green roofs, cool roofs, and cool pavements"
+        measurement = ["Vertical garden systems", "Use of renewable energy sources (PV panels)", "Heat storage materials"]
       }
       if (uhiLevel == 1 && !ndbiIndexHigh) {
         uhiDesc = "Green infrastructure"
+        measurement = ["green premises", "Increasing vegetation", "Urban blue infrastructure"]
       }
       if (uhiLevel == 2 && !ndbiIndexHigh) {
         uhiDesc = "Green infrastructure"
+        measurement = ["green premises", "Increasing vegetation", "Urban blue infrastructure"]
       }
       if (uhiLevel == 3 && !ndbiIndexHigh) {
         uhiDesc = "Green infrastructure, cool pavements"
+        measurement = ["green premises", "Change of building materials", "Urban blue infrastructure"]
       }
     }
 
     return (
       <div>
-        <h2>Measure Categories</h2>
-        {uhiDesc}
+        <h2 style={{marginBottom: 10}}>Measure Categories</h2>
+        <h3>{uhiDesc}</h3>
+        {measurement.map(el => {
+          return (
+            <p>{`- ${el}`}</p>
+          )
+        })}
       </div>
     );
   };
