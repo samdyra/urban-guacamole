@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./UHIMapScreenStyle.css";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, Marker } from "react-leaflet";
 import constant from "../../constant/descriptions.json";
 import UHIconstant from "../../constant/UHIDesc.json";
 import impsur from "../../images/ImperSurface.png";
@@ -13,10 +13,11 @@ import linkedin from "../../images/linkedin.png";
 import instagram from "../../images/instagram.png";
 import whatsapp from "../../images/whatsapp.png";
 import footerLine from "../../images/miniFooterLine.png";
-import data2021 from "../../Shapefiles/cirebon2021.json"
+import data2021 from "../../Shapefiles/cirebon2021.json";
 import Modal from "../../components/Modal/Modal";
 import paramsDesc from "../../constant/paramsDesc.json";
 import { MinimapControl } from "../../components/minimap/miniMap";
+import * as ReactDOMServer from "react-dom/server";
 
 const UHIMapScreen = () => {
   const [uhiValue, setUhiValue] = useState("");
@@ -42,6 +43,49 @@ const UHIMapScreen = () => {
   } else {
     document.body.classList.remove("active-modal");
   }
+
+  const Popup = ({ feature }) => {
+    const uhiValue = feature.properties.LST;
+    const ndbiIndexHigh = feature.properties.NDBI > 0 
+
+    let uhiLevel =
+      uhiValue < 34
+        ? 0
+        : uhiValue >= 34 && uhiValue < 34.4
+        ? 1
+        : uhiValue >= 34.4 && uhiValue < 34.8
+        ? 2
+        : 3;
+
+    let uhiDesc = "UHI Level in this area is not significant"
+    if (uhiLevel != 0) {
+      if (uhiLevel == 1 && ndbiIndexHigh) {
+        uhiDesc = "Green roofs"
+      }
+      if (uhiLevel == 2 && ndbiIndexHigh) {
+        uhiDesc = "Green roofs, cool roofs"
+      }
+      if (uhiLevel == 3 && ndbiIndexHigh) {
+        uhiDesc = "Green roofs, cool roofs, and cool pavements"
+      }
+      if (uhiLevel == 1 && !ndbiIndexHigh) {
+        uhiDesc = "Green roofs"
+      }
+      if (uhiLevel == 2 && !ndbiIndexHigh) {
+        uhiDesc = "Green roofs, cool roofs"
+      }
+      if (uhiLevel == 3 && !ndbiIndexHigh) {
+        uhiDesc = "Green roofs, cool roofs, cool pavements"
+      }
+    }
+
+    return (
+      <div>
+        <h2>Measure Categories</h2>
+        {uhiDesc}
+      </div>
+    );
+  };
 
   // NDBI Modal End
 
@@ -99,15 +143,15 @@ const UHIMapScreen = () => {
   // Styling functions
 
   const getColor = (d) => {
-    return d == 32.50
+    return d == 32.5
       ? "rgb(0, 169, 11)"
-      : d >= 32.50 && d <= 33.00
+      : d >= 32.5 && d <= 33.0
       ? "rgb(4, 215, 71)"
-      : d >= 33.00 && d <= 33.50
+      : d >= 33.0 && d <= 33.5
       ? "rgb(255, 217, 0)"
-      : d >= 33.50 && d <= 34.00
+      : d >= 33.5 && d <= 34.0
       ? "rgb(255, 171, 3)"
-      : d >= 34.00 && d <= 35.0
+      : d >= 34.0 && d <= 35.5
       ? "rgb(226, 1, 1)"
       : "";
   };
@@ -163,6 +207,12 @@ const UHIMapScreen = () => {
       setKecamatanValue(kecamatanValue);
       setAreaValue(areaValue);
     }
+
+    const popupContent = ReactDOMServer.renderToString(
+      <Popup feature={feature} />
+    );
+    layer.bindPopup(popupContent);
+
     layer.on({
       click: (e) => {
         paramsFunc();
