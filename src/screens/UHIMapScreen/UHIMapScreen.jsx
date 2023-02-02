@@ -69,13 +69,13 @@ const UHIMapScreen = () => {
         uhiDesc = "Green roofs, cool roofs, and cool pavements"
       }
       if (uhiLevel == 1 && !ndbiIndexHigh) {
-        uhiDesc = "Green roofs"
+        uhiDesc = "Green infrastructure"
       }
       if (uhiLevel == 2 && !ndbiIndexHigh) {
-        uhiDesc = "Green roofs, cool roofs"
+        uhiDesc = "Green infrastructure"
       }
       if (uhiLevel == 3 && !ndbiIndexHigh) {
-        uhiDesc = "Green roofs, cool roofs, cool pavements"
+        uhiDesc = "Green infrastructure, cool pavements"
       }
     }
 
